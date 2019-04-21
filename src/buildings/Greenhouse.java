@@ -2,7 +2,7 @@ package buildings;
 
 import resources.ResourcePack;
 
-public class Greenhouse implements Building {
+public class Greenhouse extends Building {
 
     @Override
     public ResourcePack generateResources() {
@@ -13,6 +13,9 @@ public class Greenhouse implements Building {
     public ResourcePack consumeResources() {
         return new ResourcePack(30, 0, 0);
     }
+
+    @Override
+    public int timeOfBuild() { return 5; }
 
     @Override
     public String getName() {

@@ -1,13 +1,8 @@
 package buildings;
 
-
-
 import resources.ResourcePack;
 
-import java.util.ArrayList;
-import java.util.List;
-
-public class PowerStation implements Building {
+public class PowerStation extends Building {
 
     @Override
     public ResourcePack generateResources() {
@@ -18,6 +13,9 @@ public class PowerStation implements Building {
     public ResourcePack consumeResources() {
         return new ResourcePack(0, 0, 5);
     }
+
+    @Override
+    public int timeOfBuild() { return 7; }
 
     @Override
     public String getName() {

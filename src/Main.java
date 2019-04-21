@@ -20,11 +20,15 @@ public class Main {
 
         Simulator simulator = new Simulator(resourcePack, buildings);
 
+        int counter = 0;
         while(true) {
             simulator.print();
             simulator.tick();
             Thread.sleep(1000);
+            counter++;
+            if(counter == 0) simulator.build(new PowerStation());
+            if(counter == 3) simulator.build(new Hub());
+            if(counter == 7) simulator.build(new Greenhouse());
         }
-
     }
 }

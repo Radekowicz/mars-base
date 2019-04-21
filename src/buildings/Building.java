@@ -2,13 +2,25 @@ package buildings;
 
 import resources.ResourcePack;
 
-import java.util.List;
+public abstract class Building {
+    private int counter = timeOfBuild();
 
-public interface Building {
+    public abstract ResourcePack generateResources();
+    public abstract ResourcePack consumeResources();
 
-    ResourcePack generateResources();
-    ResourcePack consumeResources();
+    public abstract int timeOfBuild();
+    public abstract String getName();
 
-    String getName();
+    public void decreaseCounter() {
+        counter--;
+    }
+
+    public boolean isReady() {
+        return (counter == 0);
+    }
+
+    public int getCounter() {
+        return counter;
+    }
 
 }
