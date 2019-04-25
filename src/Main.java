@@ -1,8 +1,8 @@
 import simulator.Simulator;
 
 public class Main {
-    public static void main(String[] args) throws Exception {
-        Simulator marsBasesimulator = new Simulator();
-        marsBasesimulator.run();
+    public static void main(String[] args) {
+        Simulator marsBaseSimulator = new Simulator();
+        marsBaseSimulator.run();
     }
 }
