@@ -4,7 +4,7 @@ import buildings.BuildingManager;
 import resources.ResourcesManager;
 import transport.TransportManager;
 
-public class Simulator {
+public class MarsBaseSimulator {
     private BuildingManager buildingManager = new BuildingManager();
     private ResourcesManager resourcesManager = new ResourcesManager();
     private TransportManager transportManager = new TransportManager();
