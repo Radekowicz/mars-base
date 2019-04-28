@@ -1,0 +1,101 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=2.4cm]{geometry}
+
+\begin{document}
+
+\begin{center}
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{|l|l|} 
+ \hline
+ \multicolumn{2}{|l|}{\textbf{Class name:} BuildingManager}\\
+ \hline
+ \multicolumn{2}{|l|}{\textbf{Superclass:} none } \\ 
+ \multicolumn{2}{|l|}{\textbf{Subclass(es):} none } \\
+ \hline
+    \textbf{Responsibilities:} & \textbf{Collaboration:} \\
+    buildings management & Building \\
+    update buildings's status & \\
+    transfer of information about buildings & \\
+ \hline
+\end{tabular}
+\end{table}
+\end{center}
+
+\begin{center}
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{|l|l|} 
+ \hline
+ \multicolumn{2}{|l|}{\textbf{Class name:} ResourcesManager}\\
+ \hline
+ \multicolumn{2}{|l|}{\textbf{Superclass:} none } \\ 
+ \multicolumn{2}{|l|}{\textbf{Subclass(es):} none } \\
+ \hline
+    \textbf{Responsibilities:} & \textbf{Collaboration:} \\
+    resources management & Resources \\
+    transfer of information about resources & ResourcesPack \\
+ \hline
+\end{tabular}
+\end{table}
+\end{center}
+
+\begin{center}
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{|l|l|} 
+ \hline
+ \multicolumn{2}{|l|}{\textbf{Class name:} EventManager}\\
+ \hline
+ \multicolumn{2}{|l|}{\textbf{Superclass:} none } \\ 
+ \multicolumn{2}{|l|}{\textbf{Subclass(es):} none } \\
+ \hline
+    \textbf{Responsibilities:} & \textbf{Collaboration:} \\
+    triggers an event & Event \\
+    determines the course of the event & BuildingManager \\
+    transmits information about the event & ResourcesManager \\
+    & TransportManager \\
+ \hline
+\end{tabular}
+\end{table}
+\end{center}
+
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{|l|l|} 
+ \hline
+ \multicolumn{2}{|l|}{\textbf{Class name:} MainFrame}\\
+ \hline
+ \multicolumn{2}{|l|}{\textbf{Superclass:} JFrame } \\ 
+ \multicolumn{2}{|l|}{\textbf{Subclass(es):} none } \\
+ \hline
+    \textbf{Responsibilities:} & \textbf{Collaboration:} \\
+    shows informations from managers & EventManager \\
+    determines the course of the event & BuildingManager \\
+    transmits information about the event & ResourcesManager \\
+    & TransportManager \\
+    & MarsBaseSimulator \\
+ \hline
+\end{tabular}
+\end{table}
+
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{|l|l|} 
+ \hline
+ \multicolumn{2}{|l|}{\textbf{Class name:} MarsBaseSimulator}\\
+ \hline
+ \multicolumn{2}{|l|}{\textbf{Superclass:} none } \\ 
+ \multicolumn{2}{|l|}{\textbf{Subclass(es):} none } \\
+ \hline
+    \textbf{Responsibilities:} & \textbf{Collaboration:} \\
+    updating the status & EventManager \\
+    time handling  & BuildingManager \\
+    & ResourcesManager \\
+    & TransportManager \\
+ \hline
+\end{tabular}
+\end{table}
+
+\end{document}
