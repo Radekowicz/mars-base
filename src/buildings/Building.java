@@ -4,6 +4,7 @@ import resources.ResourcePack;
 
 public abstract class Building {
     private int counter = timeOfBuild();
+    private BuildingStatus buildingStatus;
 
     public abstract ResourcePack generateResources();
     public abstract ResourcePack consumeResources();
