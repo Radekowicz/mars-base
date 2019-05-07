@@ -6,8 +6,10 @@ public abstract class Building {
     private int counter = timeOfBuild();
     private BuildingStatus buildingStatus;
 
+
     public abstract ResourcePack generateResources();
     public abstract ResourcePack consumeResources();
+    public abstract ResourcePack costOfBuilding();
 
     public abstract int timeOfBuild();
     public abstract String getName();

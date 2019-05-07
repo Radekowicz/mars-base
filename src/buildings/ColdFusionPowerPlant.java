@@ -14,6 +14,11 @@ public class ColdFusionPowerPlant extends Building {
     }
 
     @Override
+    public ResourcePack costOfBuilding() {
+        return null;
+    }
+
+    @Override
     public int timeOfBuild() {
         return 0;
     }

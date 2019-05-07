@@ -15,6 +15,9 @@ public class Greenhouse extends Building {
     }
 
     @Override
+    public  ResourcePack costOfBuilding() { return new ResourcePack(200, 100, 0); }
+
+    @Override
     public int timeOfBuild() { return 5; }
 
     @Override
