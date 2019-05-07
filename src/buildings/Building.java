@@ -6,6 +6,13 @@ public abstract class Building {
     private int counter = timeOfBuild();
     private BuildingStatus buildingStatus;
 
+    public BuildingStatus getBuildingStatus() {
+        return buildingStatus;
+    }
+
+    public void setBuildingStatus(BuildingStatus buildingStatus) {
+        this.buildingStatus = buildingStatus;
+    }
 
     public abstract ResourcePack generateResources();
     public abstract ResourcePack consumeResources();

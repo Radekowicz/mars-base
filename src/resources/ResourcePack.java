@@ -3,38 +3,61 @@ package resources;
 public class ResourcePack {
 
     private int energy;
-    private int soil;
+    private int marsMaterial;
+    private int earthMaterial;
+    private int water;
     private int food;
+    private int oxygen;
 
-    public ResourcePack(int energy, int soil, int food) {
+    public ResourcePack(int energy, int marsMaterial, int earthMaterial, int water, int food, int oxygen) {
         this.energy = energy;
-        this.soil = soil;
+        this.marsMaterial = marsMaterial;
+        this.earthMaterial = earthMaterial;
+        this.water = water;
         this.food = food;
+        this.oxygen = oxygen;
     }
 
     public void add(ResourcePack other) {
         energy += other.getEnergy();
-        soil += other.getSoil();
+        marsMaterial += other.getMarsMaterial();
+        earthMaterial += other.getEarthMaterial()
         food += other.getFood();
+        water += other.getWater();
+        oxygen += other.getOxygen();
     }
 
     public void subtract(ResourcePack other) {
         energy -= other.getEnergy();
-        soil -= other.getSoil();
+        marsMaterial -= other.getMarsMaterial();
+        earthMaterial -= other.getEarthMaterial()
         food -= other.getFood();
+        water -= other.getWater();
+        oxygen -= other.getOxygen();
     }
 
     public int getEnergy() {
         return energy;
     }
 
-    public int getSoil() {
-        return soil;
-    }
-
     public int getFood() {
         return food;
     }
 
+    public int getMarsMaterial() {
+        return marsMaterial;
+    }
+
+    public int getEarthMaterial() {
+        return earthMaterial;
+    }
+
+    public int getWater() {
+        return water;
+    }
+
+    public int getOxygen() {
+        return oxygen;
+    }
 }
 

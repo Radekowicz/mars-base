@@ -1,3 +1,5 @@
+/*
+
 import buildings.Building;
 import resources.ResourcePack;
 import java.util.ArrayList;
@@ -61,4 +63,4 @@ public class Simulator {
         awaitingBuildings.add(building);
     }
 }
-
+*/
