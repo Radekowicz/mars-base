@@ -1,8 +1,11 @@
 package buildings;
 
-import resources.ResourcePack;
+import resources.ConsumablesPack;
+import resources.ConsumablesPack;
+import resources.UnitsPack;
 
-public abstract class Building {
+public abstract class Building implements Comparable<Building> {
+
     private int counter = timeOfBuild();
     private BuildingStatus buildingStatus;
 
@@ -14,12 +17,14 @@ public abstract class Building {
         this.buildingStatus = buildingStatus;
     }
 
-    public abstract ResourcePack generateResources();
-    public abstract ResourcePack consumeResources();
-    public abstract ResourcePack costOfBuilding();
+    public abstract ConsumablesPack generateResources();
+    public abstract ConsumablesPack consumeResources();
+    public abstract ConsumablesPack costOfBuildingInConsumables();
+    public abstract UnitsPack costOfBuildingInConsumablesInUnits();
 
     public abstract int timeOfBuild();
     public abstract String getName();
+    public abstract Integer getPriority();
 
     public void decreaseCounter() {
         counter--;
@@ -33,4 +38,8 @@ public abstract class Building {
         return counter;
     }
 
+    @Override
+    public int compareTo(Building o) {
+        return o.getPriority().compareTo(this.getPriority());
+    }
 }

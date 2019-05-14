@@ -1,17 +1,17 @@
 /*
 
 import buildings.Building;
-import resources.ResourcePack;
+import resources.ConsumablesPack;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Simulator {
     private int time;
-    private ResourcePack resources;
+    private ConsumablesPack resources;
     private List<Building> buildings;
     private List<Building> awaitingBuildings;
 
-    public Simulator(ResourcePack resources, List<Building> buildings) {
+    public Simulator(ConsumablesPack resources, List<Building> buildings) {
         this.time = 0;
         this.resources = resources;
         this.buildings = buildings;

@@ -52,6 +52,7 @@ public final class ResourcesManager {
         System.out.println("HUMANS: "+unitsPack.getHumans());
         System.out.println("ROBOTS: "+unitsPack.getRobots());
     }
+
     public static boolean isEnough(ConsumablesPack cP, UnitsPack uP){
         return consumablesPack.isEnough(cP) && unitsPack.isEnough(uP);
     }

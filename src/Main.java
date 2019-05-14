@@ -1,5 +1,5 @@
 import buildings.*;
-import resources.ResourcePack;
+import resources.ConsumablesPack;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,14 +9,14 @@ public class Main {
 
     public static void main(String[] args) throws Exception {
 
-        ResourcePack resourcePack = new ResourcePack(100, 100, 100);
+        ConsumablesPack ConsumablesPack = new ConsumablesPack(100, 100, 100);
         List<Building> buildings = new ArrayList<>();
         BuildingManager buildingManager = new BuildingManager();
         buildings.add(new Hub());
         buildings.add(new PowerStation());
         buildings.add(new Greenhouse());
 
-        Simulator simulator = new Simulator(resourcePack, buildings);
+        Simulator simulator = new Simulator(ConsumablesPack, buildings);
 
         int counter = 0;
         while(true) {

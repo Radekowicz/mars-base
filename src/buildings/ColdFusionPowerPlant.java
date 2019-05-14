@@ -1,30 +1,41 @@
 package buildings;
 
-import resources.ResourcePack;
+import resources.ConsumablesPack;
+import resources.UnitsPack;
 
 public class ColdFusionPowerPlant extends Building {
     @Override
-    public ResourcePack generateResources() {
-        return null;
+    public ConsumablesPack generateResources() {
+        return new ConsumablesPack(1000, 0,0,0,0,0);
     }
 
     @Override
-    public ResourcePack consumeResources() {
-        return null;
+    public ConsumablesPack consumeResources() {
+        return new ConsumablesPack(0,0,0,10,0,5);
     }
 
     @Override
-    public ResourcePack costOfBuilding() {
-        return null;
+    public ConsumablesPack costOfBuildingInConsumables() {
+        return new ConsumablesPack(3000, 1000, 2000, 200, 0, 30);
+    }
+
+    @Override
+    public UnitsPack costOfBuildingInConsumablesInUnits() {
+        return new UnitsPack(5, 20);
     }
 
     @Override
     public int timeOfBuild() {
-        return 0;
+        return 20;
     }
 
     @Override
     public String getName() {
-        return null;
+        return "Cold Fusion Power Plant";
+    }
+
+    @Override
+    public Integer getPriority() {
+        return 2;
     }
 }

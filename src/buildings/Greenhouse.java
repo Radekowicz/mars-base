@@ -1,27 +1,42 @@
 package buildings;
 
-import resources.ResourcePack;
+import resources.ConsumablesPack;
+import resources.UnitsPack;
 
 public class Greenhouse extends Building {
-
     @Override
-    public ResourcePack generateResources() {
-        return new ResourcePack(0, 0, 100);
+    public ConsumablesPack generateResources() {
+        return new ConsumablesPack(0, 0,0,0, 100, 0);
     }
 
     @Override
-    public ResourcePack consumeResources() {
-        return new ResourcePack(30, 0, 0);
+    public ConsumablesPack consumeResources() {
+        return new ConsumablesPack(20, 0,0,50, 0, 0);
     }
 
     @Override
-    public  ResourcePack costOfBuilding() { return new ResourcePack(200, 100, 0); }
+    public ConsumablesPack costOfBuildingInConsumables() {
+        return new ConsumablesPack(200, 500,300,0, 0, 0);
+
+    }
 
     @Override
-    public int timeOfBuild() { return 5; }
+    public UnitsPack costOfBuildingInConsumablesInUnits() {
+        return new UnitsPack(4, 10);
+    }
+
+    @Override
+    public int timeOfBuild() {
+        return 4;
+    }
 
     @Override
     public String getName() {
-        return " Greenhouse";
-}
+        return "Greenhouse";
+    }
+
+    @Override
+    public Integer getPriority() {
+        return 1;
+    }
 }
