@@ -1,26 +1,41 @@
 package buildings;
 
-import resources.ResourcePack;
+import resources.ConsumablesPack;
+import resources.UnitsPack;
 
 public class Hub extends Building {
-
     @Override
-    public ResourcePack generateResources() {
-        return new ResourcePack(0,0,0);
+    public ConsumablesPack generateResources() {
+        return new ConsumablesPack(0,0,0,0,0,0);
     }
 
     @Override
-    public ResourcePack consumeResources() {
-        return new ResourcePack(20, 10, 30);
+    public ConsumablesPack consumeResources() {
+        return new ConsumablesPack(100,0,0,100,100,200);
+    }
+
+    @Override
+    public ConsumablesPack costOfBuildingInConsumables() {
+        return new ConsumablesPack(1000, 2000, 1000, 0, 0, 0);
+    }
+
+    @Override
+    public UnitsPack costOfBuildingInConsumablesInUnits() {
+        return new UnitsPack(0, 10);
     }
 
     @Override
     public int timeOfBuild() {
-        return 10;
+        return 5;
     }
 
     @Override
     public String getName() {
-        return " Hub";
+        return "Hub";
+    }
+
+    @Override
+    public Integer getPriority() {
+        return 5;
     }
 }

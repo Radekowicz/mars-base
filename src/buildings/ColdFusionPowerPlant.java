@@ -3,40 +3,39 @@ package buildings;
 import resources.ConsumablesPack;
 import resources.UnitsPack;
 
-public class Greenhouse extends Building {
+public class ColdFusionPowerPlant extends Building {
     @Override
     public ConsumablesPack generateResources() {
-        return new ConsumablesPack(0, 0,0,0, 100, 0);
+        return new ConsumablesPack(1000, 0,0,0,0,0);
     }
 
     @Override
     public ConsumablesPack consumeResources() {
-        return new ConsumablesPack(20, 0,0,50, 0, 0);
+        return new ConsumablesPack(0,0,0,10,0,5);
     }
 
     @Override
     public ConsumablesPack costOfBuildingInConsumables() {
-        return new ConsumablesPack(200, 500,300,0, 0, 0);
-
+        return new ConsumablesPack(3000, 1000, 2000, 200, 0, 30);
     }
 
     @Override
     public UnitsPack costOfBuildingInConsumablesInUnits() {
-        return new UnitsPack(4, 10);
+        return new UnitsPack(5, 20);
     }
 
     @Override
     public int timeOfBuild() {
-        return 4;
+        return 20;
     }
 
     @Override
     public String getName() {
-        return "Greenhouse";
+        return "Cold Fusion Power Plant";
     }
 
     @Override
     public Integer getPriority() {
-        return 1;
+        return 2;
     }
 }
