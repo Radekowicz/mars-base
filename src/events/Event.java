@@ -1,4 +1,4 @@
 package events;
 
-public abstract class Event {
+public class Event {
 }

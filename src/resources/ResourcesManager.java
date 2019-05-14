@@ -16,8 +16,6 @@ public final class ResourcesManager {
             resourcesManager = new ResourcesManager(consumablesPack, unitsPack);
         return resourcesManager;
     }
-    // ResourcesManager resourcesManager = ResourcesManager.initializeResourcesManager(consumablesPack, unitsPack);
-    // Metoda odpowiedzialna za stworzenie jedynej instancji klasy ResourcesManager
 
     public static void add(ConsumablesPack cP, UnitsPack uP){
         consumablesPack.addEnergy(cP.getEnergy());

@@ -12,7 +12,6 @@ import java.util.List;
 public final class BuildingManager {
     private static BuildingManager buildingManager = null;
 
-
     ConsumablesPack ConsumablesPack;
     private List<Building> buildings;
     private List<Building> awaitingBuildings;
