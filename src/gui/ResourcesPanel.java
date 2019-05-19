@@ -29,11 +29,11 @@ public class ResourcesPanel extends JPanel {
         energyArea = new JTextArea("" + ResourcesManager.getEnergyStatus());
         waterArea = new JTextArea ("" + ResourcesManager.getWaterStatus());
         oxygenArea = new JTextArea("" + ResourcesManager.getOxygenStatus());
-        foodArea = new JTextArea(""+ ResourcesManager.getFoodStatus());
-        marsMaterialArea = new JTextArea(""+ ResourcesManager.getMarsMaterialStatus());
-        earthMaterialArea = new JTextArea(""+ ResourcesManager.getEarthMaterialStatus());
-        humanArea = new JTextArea(""+ ResourcesManager.getHumanStatus());
-        robotArea = new JTextArea(""+ ResourcesManager.getRobotStatus());
+        foodArea = new JTextArea("" + ResourcesManager.getFoodStatus());
+        marsMaterialArea = new JTextArea("" + ResourcesManager.getMarsMaterialStatus());
+        earthMaterialArea = new JTextArea("" + ResourcesManager.getEarthMaterialStatus());
+        humanArea = new JTextArea("" + ResourcesManager.getHumanStatus());
+        robotArea = new JTextArea("" + ResourcesManager.getRobotStatus());
 
         add(new JTextArea("Resources: "));
         add(new JTextArea("Energy: "));
@@ -74,6 +74,5 @@ public class ResourcesPanel extends JPanel {
         earthMaterialArea.setText("" + ResourcesManager.getEarthMaterialStatus());
         humanArea.setText("" + ResourcesManager.getHumanStatus());
         robotArea.setText("" + ResourcesManager.getRobotStatus());
-        System.out.println("HELLO");
     }
 }
