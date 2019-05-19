@@ -54,4 +54,36 @@ public final class ResourcesManager {
     public static boolean isEnough(ConsumablesPack cP, UnitsPack uP){
         return consumablesPack.isEnough(cP) && unitsPack.isEnough(uP);
     }
+
+    public static long getEnergyStatus() {
+        return consumablesPack.getEnergy();
+    }
+
+    public static long getWaterStatus() {
+        return consumablesPack.getWater();
+    }
+
+    public static long getOxygenStatus() {
+        return consumablesPack.getOxygen();
+    }
+
+    public static long getFoodStatus() {
+        return consumablesPack.getFood();
+    }
+
+    public static long getMarsMaterialStatus() {
+        return consumablesPack.getMarsMaterial();
+    }
+
+    public static long getEarthMaterialStatus() {
+        return consumablesPack.getEarthMaterial();
+    }
+
+    public static long getHumanStatus() {
+        return unitsPack.getHumans();
+    }
+
+    public static long getRobotStatus() {
+        return unitsPack.getRobots();
+    }
 }
