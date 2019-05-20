@@ -4,6 +4,12 @@ import resources.ConsumablesPack;
 import resources.UnitsPack;
 
 public class OxygenGenerator extends Building {
+    private static int buildingNumber = 1;
+
+    public OxygenGenerator() {
+        super("OxygenGenerator #" + buildingNumber++);
+    }
+
     @Override
     public ConsumablesPack generateResources() {
         return new ConsumablesPack(0,0,0,0,0,200);
@@ -27,11 +33,6 @@ public class OxygenGenerator extends Building {
     @Override
     public int timeOfBuild() {
         return 3;
-    }
-
-    @Override
-    public String getName() {
-        return "Oxygen Generator";
     }
 
     @Override

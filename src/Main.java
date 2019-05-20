@@ -1,7 +1,6 @@
 import engine.MarsBaseSimulator;
 import gui.MainFrame;
 
-import javax.swing.*;
 import java.awt.*;
 
 public class Main {
@@ -10,10 +9,14 @@ public class Main {
         MarsBaseSimulator marsBaseSimulator = new MarsBaseSimulator();
 
         EventQueue.invokeLater(() -> {
-            JFrame frame = new MainFrame();
-            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            frame.setVisible(true);
+            new MainFrame();
         });
+
+//        List<Building> buildings = BuildingManager.getBuildings();
+//
+//        for (Building building: buildings) {
+//            System.out.println(building.getBuildingStatusAsString());
+//        }
 
         marsBaseSimulator.run();
     }

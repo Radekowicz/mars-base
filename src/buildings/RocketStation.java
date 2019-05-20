@@ -4,6 +4,12 @@ import resources.ConsumablesPack;
 import resources.UnitsPack;
 
 public class RocketStation extends Building {
+    private static int buildingNumber = 1;
+
+    public RocketStation() {
+        super("RocketStation #" + buildingNumber++);
+    }
+
     @Override
     public ConsumablesPack generateResources() {
         return new ConsumablesPack(0,100,0,0,0,0);
@@ -27,11 +33,6 @@ public class RocketStation extends Building {
     @Override
     public int timeOfBuild() {
         return 3;
-    }
-
-    @Override
-    public String getName() {
-        return "OpenPitMine";
     }
 
     @Override
