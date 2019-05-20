@@ -12,47 +12,47 @@ public class ResourcesPanel extends JPanel {
     public static final int WIDTH = 1280;
     public static final int HEIGHT = 34;
 
-    private JTextArea energyArea;
-    private JTextArea waterArea;
-    private JTextArea oxygenArea;
-    private JTextArea foodArea;
-    private JTextArea marsMaterialArea;
-    private JTextArea earthMaterialArea;
+    private JLabel energyArea;
+    private JLabel waterArea;
+    private JLabel oxygenArea;
+    private JLabel foodArea;
+    private JLabel marsMaterialArea;
+    private JLabel earthMaterialArea;
 
-    private JTextArea humanArea;
-    private JTextArea robotArea;
+    private JLabel humanArea;
+    private JLabel robotArea;
 
     public ResourcesPanel() {
         setPreferredSize(new Dimension(WIDTH, HEIGHT));
         setBorder(BorderFactory.createLineBorder(Color.BLACK,2));
 
-        energyArea = new JTextArea("" + ResourcesManager.getEnergyStatus());
-        waterArea = new JTextArea ("" + ResourcesManager.getWaterStatus());
-        oxygenArea = new JTextArea("" + ResourcesManager.getOxygenStatus());
-        foodArea = new JTextArea(""+ ResourcesManager.getFoodStatus());
-        marsMaterialArea = new JTextArea(""+ ResourcesManager.getMarsMaterialStatus());
-        earthMaterialArea = new JTextArea(""+ ResourcesManager.getEarthMaterialStatus());
-        humanArea = new JTextArea(""+ ResourcesManager.getHumanStatus());
-        robotArea = new JTextArea(""+ ResourcesManager.getRobotStatus());
+        energyArea = new JLabel("" + ResourcesManager.getEnergyStatus());
+        waterArea = new JLabel ("" + ResourcesManager.getWaterStatus());
+        oxygenArea = new JLabel("" + ResourcesManager.getOxygenStatus());
+        foodArea = new JLabel("" + ResourcesManager.getFoodStatus());
+        marsMaterialArea = new JLabel("" + ResourcesManager.getMarsMaterialStatus());
+        earthMaterialArea = new JLabel("" + ResourcesManager.getEarthMaterialStatus());
+        humanArea = new JLabel("" + ResourcesManager.getHumanStatus());
+        robotArea = new JLabel("" + ResourcesManager.getRobotStatus());
 
-        add(new JTextArea("Resources: "));
-        add(new JTextArea("Energy: "));
+        add(new JLabel("Resources: "));
+        add(new JLabel("Energy: "));
         add(energyArea);
-        add(new JTextArea("Oxygen:"));
+        add(new JLabel("Oxygen:"));
         add(oxygenArea);
-        add(new JTextArea("Water:"));
+        add(new JLabel("Water:"));
         add(waterArea);
-        add(new JTextArea("Food:"));
+        add(new JLabel("Food:"));
         add(foodArea);
-        add(new JTextArea("Earth material:"));
+        add(new JLabel("Earth material:"));
         add(earthMaterialArea);
-        add(new JTextArea("Mars material:"));
+        add(new JLabel("Mars material:"));
         add(marsMaterialArea);
 
-        add(new JTextArea("Units:"));
-        add(new JTextArea("Human:"));
+        add(new JLabel("Units:"));
+        add(new JLabel("Human:"));
         add(humanArea);
-        add(new JTextArea("Robot:"));
+        add(new JLabel("Robot:"));
         add(robotArea);
 
         Timer timer = new Timer(1000, new ActionListener() {
@@ -74,6 +74,5 @@ public class ResourcesPanel extends JPanel {
         earthMaterialArea.setText("" + ResourcesManager.getEarthMaterialStatus());
         humanArea.setText("" + ResourcesManager.getHumanStatus());
         robotArea.setText("" + ResourcesManager.getRobotStatus());
-        System.out.println("HELLO");
     }
 }

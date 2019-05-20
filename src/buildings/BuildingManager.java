@@ -13,8 +13,8 @@ public final class BuildingManager {
     private static BuildingManager buildingManager = null;
 
     ConsumablesPack ConsumablesPack;
-    private List<Building> buildings;
-    private List<Building> awaitingBuildings;
+    private static List<Building> buildings;
+    private static List<Building> awaitingBuildings;
 
     private BuildingManager(ConsumablesPack ConsumablesPack, List<Building> buildings) {
         this.ConsumablesPack = ConsumablesPack;
@@ -30,12 +30,12 @@ public final class BuildingManager {
     }
 
 
-    public boolean build(Building building) {
+    public static boolean build(Building building) {
         if(ResourcesManager.isEnough(building.costOfBuildingInConsumables(), new UnitsPack(0,0))) return true;
         else return false;
     }
     
-    public void update() {
+    public static void update() {
         //resource management
 
         for (Building building : buildings) {
@@ -57,4 +57,7 @@ public final class BuildingManager {
         awaitingBuildings.removeAll(toRemove);
     }
 
+    public static List<Building> getBuildings() {
+        return buildings;
+    }
 }

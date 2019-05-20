@@ -4,6 +4,12 @@ import resources.ConsumablesPack;
 import resources.UnitsPack;
 
 public class PrintStation extends Building{
+    private static int buildingNumber = 1;
+
+    public PrintStation() {
+        super("PrintStation #" + buildingNumber++);
+    }
+
     @Override
     public ConsumablesPack generateResources() {
         return new ConsumablesPack(0,0,0,0,0,0);
@@ -27,11 +33,6 @@ public class PrintStation extends Building{
     @Override
     public int timeOfBuild() {
         return 8;
-    }
-
-    @Override
-    public String getName() {
-        return "Print Station";
     }
 
     @Override

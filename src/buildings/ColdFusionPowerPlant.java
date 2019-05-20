@@ -4,6 +4,12 @@ import resources.ConsumablesPack;
 import resources.UnitsPack;
 
 public class ColdFusionPowerPlant extends Building {
+    private static int buildingNumber = 1;
+
+    public ColdFusionPowerPlant() {
+        super("Cold Fusion Power Plant #" + buildingNumber++);
+    }
+
     @Override
     public ConsumablesPack generateResources() {
         return new ConsumablesPack(1000, 0,0,0,0,0);
@@ -27,11 +33,6 @@ public class ColdFusionPowerPlant extends Building {
     @Override
     public int timeOfBuild() {
         return 20;
-    }
-
-    @Override
-    public String getName() {
-        return "Cold Fusion Power Plant";
     }
 
     @Override

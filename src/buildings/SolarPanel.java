@@ -4,6 +4,12 @@ import resources.ConsumablesPack;
 import resources.UnitsPack;
 
 public class SolarPanel extends Building {
+    private static int buildingNumber = 1;
+
+    public SolarPanel() {
+        super("Solar Panel #" + buildingNumber++);
+    }
+
     @Override
     public ConsumablesPack generateResources() {
         return new ConsumablesPack(0,100,0,0,0,0);
@@ -27,11 +33,6 @@ public class SolarPanel extends Building {
     @Override
     public int timeOfBuild() {
         return 3;
-    }
-
-    @Override
-    public String getName() {
-        return "OpenPitMine";
     }
 
     @Override

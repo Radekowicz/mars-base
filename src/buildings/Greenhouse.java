@@ -4,6 +4,13 @@ import resources.ConsumablesPack;
 import resources.UnitsPack;
 
 public class Greenhouse extends Building {
+    private static int buildingNumber = 1;
+
+    public Greenhouse() {
+        super("Greenhouse" + buildingNumber++);
+    }
+
+
     @Override
     public ConsumablesPack generateResources() {
         return new ConsumablesPack(0, 0,0,0, 100, 0);

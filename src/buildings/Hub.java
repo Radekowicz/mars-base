@@ -4,6 +4,12 @@ import resources.ConsumablesPack;
 import resources.UnitsPack;
 
 public class Hub extends Building {
+    private static int buildingNumber = 1;
+
+    public Hub() {
+        super("Hub #" + buildingNumber++);
+    }
+
     @Override
     public ConsumablesPack generateResources() {
         return new ConsumablesPack(0,0,0,0,0,0);
@@ -27,11 +33,6 @@ public class Hub extends Building {
     @Override
     public int timeOfBuild() {
         return 5;
-    }
-
-    @Override
-    public String getName() {
-        return "Hub";
     }
 
     @Override
