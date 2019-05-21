@@ -6,9 +6,10 @@ import events.EventManager;
 import resources.ConsumablesPack;
 import resources.ResourcesManager;
 import resources.UnitsPack;
+import transport.Transport;
+import transport.TransportManager;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public final class SettingsManager {
     private SettingsManager() {}
@@ -20,6 +21,9 @@ public final class SettingsManager {
 
         ArrayList<Building> buildings = SettingsStream.loadBuildings();
         BuildingManager.initializeBuildingManager(CP, buildings);
+
+        ArrayList<Transport> transports = SettingsStream.loadTransports();
+        TransportManager.initializeResourcesManager(transports);
 
         int chanceForEvent = SettingsStream.loadChanceForEvent();
         int timeBreakForEvent = SettingsStream.loadTimeBreakForEvent();

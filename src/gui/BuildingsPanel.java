@@ -24,8 +24,6 @@ public class BuildingsPanel extends JPanel {
         buildingsButtons = new ArrayList<>();
 
         for (Building building: BuildingManager.getBuildings()) {
-            System.out.println(building.getName());
-            System.out.println(building.toString());
             BuildingButton buildingButton = new BuildingButton(building);
             buildingsButtons.add(buildingButton);
             buildingButton.addActionListener(new ActionListener() {
