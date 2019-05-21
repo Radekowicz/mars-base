@@ -100,4 +100,35 @@ public final class SettingsStream {
 
         return buildings;
     }
+
+    public static int loadChanceForEvent() {
+        File file = new File("Options/EventOptions.txt");
+
+        try {
+            BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
+
+            return Integer.parseInt(bufferedReader.readLine());
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return 70;
+    }
+
+    public static int loadTimeBreakForEvent() {
+        File file = new File("Options/EventOptions.txt");
+
+        try {
+            BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
+
+            bufferedReader.readLine();
+            return Integer.parseInt(bufferedReader.readLine());
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return 10000;
+    }
 }

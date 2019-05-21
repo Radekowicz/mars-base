@@ -2,3 +2,4 @@ Hub
 Hub
 SolarPanel
 PrintStation
+OxygenGenerator

@@ -7,7 +7,7 @@ public class PrintStation extends Building{
     private static int buildingNumber = 1;
 
     public PrintStation() {
-        super("PrintStation #" + buildingNumber++);
+        super("Print Station #" + buildingNumber++);
     }
 
     @Override

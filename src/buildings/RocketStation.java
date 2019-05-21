@@ -7,7 +7,7 @@ public class RocketStation extends Building {
     private static int buildingNumber = 1;
 
     public RocketStation() {
-        super("RocketStation #" + buildingNumber++);
+        super("Rocket Station #" + buildingNumber++);
     }
 
     @Override

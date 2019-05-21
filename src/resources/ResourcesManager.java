@@ -117,4 +117,14 @@ public final class ResourcesManager {
         return unitsPack.getRobots();
     }
 
+    public static void showRecources() {
+        System.out.println("ENERGY: " + consumablesPack.getEnergy());
+        System.out.println("MARSMATERIAL: " + consumablesPack.getMarsMaterial());
+        System.out.println("EARTHMATERIAL: " + consumablesPack.getEarthMaterial());
+        System.out.println("WATER: " + consumablesPack.getWater());
+        System.out.println("FOOD: " + consumablesPack.getFood());
+        System.out.println("OXYGEN: " + consumablesPack.getOxygen());
+        System.out.println("HUMANS: " + unitsPack.getHumans());
+        System.out.println("ROBOTS: " + unitsPack.getRobots());
+    }
 }
