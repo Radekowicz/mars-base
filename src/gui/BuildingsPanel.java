@@ -31,7 +31,11 @@ public class BuildingsPanel extends JPanel {
             buildingButton.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent event) {
-                    BuildingButtonEvent buildingEvent = new BuildingButtonEvent(event, buildingButton.getBuilding());
+                    BuildingButtonEvent buildingButtonEvent = new BuildingButtonEvent(event, buildingButton.getBuilding());
+
+                    if (buildingButtonEvent != null) {
+                        buildingsPanelListener.BuildingPanelOccurred(buildingButtonEvent);
+                    }
                 }
             });
             add(buildingButton);
