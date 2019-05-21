@@ -1,6 +1,6 @@
 package resources;
 
-public class UnitsPack {
+public final class UnitsPack {
     private long humans;
     private long robots;
 

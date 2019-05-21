@@ -1,7 +1,5 @@
 import engine.MarsBaseSimulator;
 import gui.MainFrame;
-import transport.Transport;
-import transport.TransportManager;
 
 import java.awt.*;
 
@@ -13,9 +11,6 @@ public class Main {
         EventQueue.invokeLater(() -> {
             new MainFrame();
         });
-
-        for (Transport transport: TransportManager.getTransports())
-            System.out.println(transport.getName());
 
         marsBaseSimulator.run();
     }
