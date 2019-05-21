@@ -9,12 +9,12 @@ public final class ConsumablesPack {
     private long oxygen;
 
     public ConsumablesPack(long energy, long marsMaterial, long earthMaterial, long water, long food, long oxygen) {
-        this.setEnergy(energy);
-        this.setMarsMaterial(marsMaterial);
-        this.setEarthMaterial(earthMaterial);
-        this.setWater(water);
-        this.setFood(food);
-        this.setOxygen(oxygen);
+        this.energy = energy;
+        this.marsMaterial = marsMaterial;
+        this.earthMaterial = earthMaterial;
+        this.water = water;
+        this.food = food;
+        this.oxygen = oxygen;
     }
 
     public long getEnergy() { return energy; }
@@ -56,5 +56,14 @@ public final class ConsumablesPack {
                 && this.getWater() >= cP.getWater()
                 && this.getFood() >= cP.getFood()
                 && this.getOxygen() >= cP.getOxygen();
+    }
+
+    public void zeroing() {
+        this.energy = 0;
+        this.marsMaterial = 0;
+        this.earthMaterial = 0;
+        this.water = 0;
+        this.food = 0;
+        this.oxygen = 0;
     }
 }
