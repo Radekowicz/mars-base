@@ -5,5 +5,6 @@ public enum BuildingStatus {
     CLOSED,
     IN_BUILD,
     AWAITING,
-    DAMAGED
+    DAMAGED,
+    DESTROYED
 }

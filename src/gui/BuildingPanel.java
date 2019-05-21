@@ -34,7 +34,7 @@ public class BuildingPanel extends JPanel {
         add(infoPanel);
 
         actionPanel = new JPanel();
-        if (building.getBuildingStatus() == BuildingStatus.WORKING) {
+        if (building.getBuildingStatus() == BuildingStatus.WORKING || building.getBuildingStatus() == BuildingStatus.AWAITING) {
             JButton stopWorkingButton = new JButton("Turn off");
             stopWorkingButton.addActionListener(new ActionListener() {
                 @Override
@@ -52,11 +52,9 @@ public class BuildingPanel extends JPanel {
                     building.setBuildingStatus(BuildingStatus.WORKING);
                 }
             });
-            add(startWorkingButton);
+            actionPanel.add(startWorkingButton);
         }
-
-
-        if (building.getBuildingStatus() == BuildingStatus.DAMAGED) {
+        else if (building.getBuildingStatus() == BuildingStatus.DAMAGED) {
             JButton fixButton = new JButton("Fix");
             fixButton.addActionListener(new ActionListener() {
                 @Override
@@ -66,7 +64,7 @@ public class BuildingPanel extends JPanel {
 //                    }
                 }
             });
-            infoPanel.add(fixButton);
+            actionPanel.add(fixButton);
         }
 
 
