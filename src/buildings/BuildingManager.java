@@ -14,48 +14,44 @@ public final class BuildingManager {
 
     ConsumablesPack ConsumablesPack;
     private static List<Building> buildings;
-    private static List<Building> awaitingBuildings;
 
     private BuildingManager(ConsumablesPack ConsumablesPack, List<Building> buildings) {
         this.ConsumablesPack = ConsumablesPack;
         this.buildings = buildings;
-        this.awaitingBuildings = new ArrayList<>();
         Collections.sort(buildings);
     }
 
-    public static BuildingManager initializeBuildingManager(ConsumablesPack ConsumablesPack, List<Building> buildings) {
+    public static void initializeBuildingManager(ConsumablesPack ConsumablesPack, List<Building> buildings) {
         if (buildingManager == null)
             buildingManager = new BuildingManager(ConsumablesPack, buildings);
-        return buildingManager;
     }
 
-
     public static boolean build(Building building) {
-        if(ResourcesManager.isEnough(building.costOfBuildingInConsumables(), new UnitsPack(0,0))) return true;
+        if (ResourcesManager.isEnough(building.costOfBuildingInConsumables(), new UnitsPack(0,0))) return true;
         else return false;
     }
     
     public static void update() {
-        //resource management
+        List<Building> buildingsToRemove = new ArrayList<>();
 
         for (Building building : buildings) {
-            if(build(building)) {
-                ResourcesManager.subtract(building.generateResources(), new UnitsPack(0,0));
-                ResourcesManager.add(building.generateResources(), new UnitsPack(0,0));
+            if (building.getBuildingStatus() == BuildingStatus.WORKING) {
+                if(ResourcesManager.subtract(building.consumeResources())) {
+                    ResourcesManager.add(building.generateResources());
+                }
+            }
+            else if (building.getBuildingStatus() == BuildingStatus.DESTROYED) {
+                buildingsToRemove.add(building);
             }
         }
 
-        //awaiting building management
-        List<Building> toRemove = new ArrayList<>();
-        for (Building building : awaitingBuildings) {
-            building.decreaseCounter();
-            if (building.isReady()) {
-                buildings.add(building);
-                toRemove.add(building);
-            }
+        for (Building building : buildingsToRemove) {
+            buildings.remove(building);
         }
-        awaitingBuildings.removeAll(toRemove);
+        buildingsToRemove.removeAll(buildingsToRemove);
+
     }
+
 
     public static List<Building> getBuildings() {
         return buildings;

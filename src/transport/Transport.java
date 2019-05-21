@@ -18,7 +18,7 @@ public abstract class Transport implements Destructible, Fixable {
     private UnitsPack currentUP;
     private TransportStatus transportStatus;
 
-    protected List<Target> possibleTargets;
+    private List<Target> possibleTargets;
 
     public Transport(int speed, String name, ConsumablesPack maxCPCapacity, UnitsPack maxUPCapacity) {
         this.speed = speed;
@@ -122,4 +122,8 @@ public abstract class Transport implements Destructible, Fixable {
     }
 
     public abstract ConsumablesPack costOfFix();
+
+    protected void setPossibleTargets(List<Target> possibleTargets) {
+        this.possibleTargets = possibleTargets;
+    }
 }

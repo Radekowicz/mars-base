@@ -7,7 +7,7 @@ public class OxygenGenerator extends Building {
     private static int buildingNumber = 1;
 
     public OxygenGenerator() {
-        super("OxygenGenerator #" + buildingNumber++);
+        super("Oxygen Generator #" + buildingNumber++);
     }
 
     @Override

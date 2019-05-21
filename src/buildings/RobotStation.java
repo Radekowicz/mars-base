@@ -7,7 +7,7 @@ public class RobotStation extends Building {
     private static int buildingNumber = 1;
 
     public RobotStation() {
-        super("RobotStation #" + buildingNumber++);
+        super("Robot Station #" + buildingNumber++);
     }
 
     @Override
