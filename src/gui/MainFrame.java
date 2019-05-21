@@ -9,18 +9,18 @@ public class MainFrame extends JFrame {
 
     private ResourcesPanel resourcesPanel;
     private BuildingsPanel buildingsPanel;
-    //private TransportsPanel transportsPanel;
+    private TransportsPanel transportsPanel;
     private JPanel topPanel;
     private JPanel bottomPanel;
 
     public MainFrame() {
-        super("Info Panel");
+        super("Mars base simulator");
         setPreferredSize(new Dimension(WIDTH, HEIGHT));
         setLayout(new BorderLayout());
 
         resourcesPanel = new ResourcesPanel();
         buildingsPanel = new BuildingsPanel();
-        //transportsPanel = new TransportsPanel();
+        transportsPanel = new TransportsPanel();
         topPanel = new JPanel();
         bottomPanel = new JPanel();
 
@@ -34,10 +34,20 @@ public class MainFrame extends JFrame {
             }
         });
 
+        transportsPanel.setTransportsPanelListener(new TransportsPanelListener() {
+            @Override
+            public void TransportPanelOccurred(TransportButtonEvent event) {
+                bottomPanel.removeAll();
+                bottomPanel.add(event.getPanel());
+                bottomPanel.revalidate();
+                bottomPanel.repaint();
+            }
+        });
+
         topPanel.add(resourcesPanel);
         topPanel.add(buildingsPanel);
-        //topPanel.add(transportsPanel);
-        bottomPanel.add(new JButton("TAKIE SE"));
+        topPanel.add(transportsPanel);
+        bottomPanel.add(new JButton("TEMPORARY BUTTON DOES NOTHIGN"));
 
         topPanel.setLayout(new BoxLayout(topPanel, BoxLayout.Y_AXIS));
 
