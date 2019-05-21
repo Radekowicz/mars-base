@@ -27,9 +27,8 @@ public final class ResourcesManager {
         unitsPack.addHumans(uP.getHumans());
         unitsPack.addRobots(uP.getRobots());
     }
-    public static void subtract(ConsumablesPack cP, UnitsPack uP){
-        if(resourcesManager.isEnough(cP,uP))
-        {
+    public static boolean subtract(ConsumablesPack cP, UnitsPack uP){
+        if(resourcesManager.isEnough(cP,uP)) {
             consumablesPack.subtractEnergy(cP.getEnergy());
             consumablesPack.subtractEarthMaterial(cP.getEarthMaterial());
             consumablesPack.subtractMarsMaterial(cP.getMarsMaterial());
@@ -38,7 +37,9 @@ public final class ResourcesManager {
             consumablesPack.subtractOxygen(cP.getOxygen());
             unitsPack.subtractHumans(uP.getHumans());
             unitsPack.subtractRobots(uP.getRobots());
+            return true;
         }
+        return false;
     }
     public static void showRecources(){
         System.out.println("ENERGY: "+consumablesPack.getEnergy());

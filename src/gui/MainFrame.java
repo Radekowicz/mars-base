@@ -27,18 +27,22 @@ public class MainFrame extends JFrame {
         buildingsPanel.setBuildingsPanelListener(new BuildingsPanelListener() {
             @Override
             public void BuildingPanelOccurred(BuildingButtonEvent event) {
-                bottomPanel = event.getPanel();
+                bottomPanel.removeAll();
+                bottomPanel.add(event.getPanel());
+                bottomPanel.revalidate();
+                bottomPanel.repaint();
             }
         });
 
         topPanel.add(resourcesPanel);
         topPanel.add(buildingsPanel);
         //topPanel.add(transportsPanel);
+        bottomPanel.add(new JButton("TAKIE SE"));
 
         topPanel.setLayout(new BoxLayout(topPanel, BoxLayout.Y_AXIS));
 
         add(topPanel, BorderLayout.NORTH);
-        add(new TextField(), BorderLayout.CENTER);
+        add(bottomPanel, BorderLayout.CENTER);
 
         pack();
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
