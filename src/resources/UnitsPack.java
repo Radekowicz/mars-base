@@ -24,4 +24,9 @@ public class UnitsPack {
     public boolean isEnough(UnitsPack uP){
         return this.humans >= uP.getHumans() && this.robots >= uP.robots;
     }
+
+    public void zeroing() {
+        this.humans = 0;
+        this.robots = 0;
+    }
 }
