@@ -1,5 +1,6 @@
 package engine;
 
+import buildings.BuildingManager;
 import resources.ConsumablesPack;
 import resources.ResourcesManager;
 import resources.UnitsPack;
@@ -16,7 +17,8 @@ public final class MarsBaseSimulator {
 
     public void run() {
         while (true) {
-            ResourcesManager.add(CP, UP);
+            BuildingManager.update();
+            ResourcesManager.showRecources();
             try {
                 Thread.sleep(1000);
             } catch (Exception e) {
