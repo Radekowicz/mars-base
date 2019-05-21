@@ -19,4 +19,8 @@ public final class TransportManager {
     public static void update() {
         return;
     }
+
+    public static List<Transport> getTransports() {
+        return transports;
+    }
 }
