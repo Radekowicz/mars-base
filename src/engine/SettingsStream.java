@@ -6,6 +6,10 @@ import java.util.*;
 import buildings.*;
 import resources.ConsumablesPack;
 import resources.UnitsPack;
+import transport.BFRocket;
+import transport.SwiftRocket;
+import transport.Transport;
+import transport.Truck;
 
 public final class SettingsStream {
     private SettingsStream() {}
@@ -101,6 +105,39 @@ public final class SettingsStream {
         return buildings;
     }
 
+    public static ArrayList<Transport> loadTransports() {
+        File file = new File("Options/Transports.txt");
+        ArrayList<Transport> transports = new ArrayList<>();
+
+        try {
+            BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
+            String transportName;
+
+            while ((transportName = bufferedReader.readLine()) != null) {
+                switch (transportName) {
+                    case "BFRocket":
+                        transports.add(new BFRocket());
+                        break;
+                    case "Truck":
+                        transports.add(new Truck());
+                        break;
+                    case "SwiftRocket":
+                        transports.add(new SwiftRocket());
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+            return transports;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return transports;
+    }
+
     public static int loadChanceForEvent() {
         File file = new File("Options/EventOptions.txt");
 
@@ -131,4 +168,5 @@ public final class SettingsStream {
 
         return 10000;
     }
+
 }

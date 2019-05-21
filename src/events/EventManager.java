@@ -29,7 +29,8 @@ public final class EventManager {
         else {
             Random random = new Random();
             if (random.nextInt(101) < chanceForEvent) {
-                Event event = new Event();
+                Event event = getEvent();
+                event.execute();
                 currentTimeBreak = originalTimeBreak;
             }
             else{
@@ -39,4 +40,13 @@ public final class EventManager {
         }
     }
 
+    private static Event getEvent() {
+        Random random = new Random();
+        int choose = random.nextInt(101);
+
+        if (choose < 20)
+            return new MeteorShower();
+        else
+            return new Sandstorm();
+    }
 }
