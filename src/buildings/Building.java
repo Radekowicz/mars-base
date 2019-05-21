@@ -1,9 +1,14 @@
 package buildings;
 
+import events.Destructible;
+import events.Fixable;
 import resources.ConsumablesPack;
+import resources.ResourcesManager;
 import resources.UnitsPack;
 
-public abstract class Building implements Comparable<Building> {
+import java.util.Random;
+
+public abstract class Building implements Comparable<Building>, Destructible, Fixable {
     private int counter = timeOfBuild();
     private BuildingStatus buildingStatus;
     private String name;
@@ -70,5 +75,43 @@ public abstract class Building implements Comparable<Building> {
         }
 
         return status;
+    }
+
+    @Override
+    public void damage() {
+
+        Random random = new Random();
+        int levelOfDamage = random.nextInt(101);
+
+        if (levelOfDamage == 0) {
+            return;
+        }
+        else if (levelOfDamage == 100) {
+            buildingStatus = BuildingStatus.DESTROYED;
+        }
+
+        buildingStatus = BuildingStatus.DAMAGED;
+    }
+
+    @Override
+    public boolean fix() {
+        if (buildingStatus != BuildingStatus.DAMAGED) {
+            return false;
+        }
+
+        ConsumablesPack CP = costOfBuildingInConsumables();
+        ConsumablesPack requiredCP = new ConsumablesPack(CP.getEnergy() / 2,
+                                                     CP.getMarsMaterial()/ 2,
+                                                     CP.getEarthMaterial() / 2,
+                                                          CP.getWater() /2,
+                                                          CP.getEarthMaterial() / 2,
+                                                        CP.getOxygen() / 2);
+
+        if (ResourcesManager.subtract(requiredCP, new UnitsPack(0, 0))) {
+            buildingStatus = BuildingStatus.WORKING;
+            return true;
+        }
+
+        return false;
     }
 }
