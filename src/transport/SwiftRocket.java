@@ -6,7 +6,7 @@ import resources.UnitsPack;
 public class SwiftRocket extends Rocket {
     private static int number = 1;
 
-    public SwiftRocket(int speed, String name, ConsumablesPack maxCPCapacity, UnitsPack maxUPCapacity) {
+    public SwiftRocket() {
         super(1600, "Swift Rocket #" + number++,
                 new ConsumablesPack(0,400, 400, 200, 0,0),
                 new UnitsPack(5, 15));

@@ -12,7 +12,6 @@ import buildings.Building;
 import buildings.BuildingStatus;
 
 public class TransportPanel extends JPanel {
-    private static final int WIDTH = 1024;
     private Transport transport;
     private JPanel infoPanel;
     private JPanel actionPanel;
@@ -24,9 +23,9 @@ public class TransportPanel extends JPanel {
 
         infoPanel = new JPanel();
         infoPanel.setLayout(new BoxLayout(infoPanel, BoxLayout.Y_AXIS));
-        infoPanel.add(new JLabel("Building name: "));
+        infoPanel.add(new JLabel("Transport name: "));
         infoPanel.add(new JLabel(transport.getName()));
-        infoPanel.add(new JLabel("Building status:"));
+        infoPanel.add(new JLabel("Transport status:"));
         infoPanel.add(new JLabel(transport.getTransportStatusAsString()));
 
         Border innerBorderForInfo = BorderFactory.createTitledBorder("Information");
@@ -35,7 +34,6 @@ public class TransportPanel extends JPanel {
         add(infoPanel);
 
         actionPanel = new JPanel();
-
 
         Border innerBorderForAction = BorderFactory.createTitledBorder("Action");
         Border outerBorderForAction = BorderFactory.createEmptyBorder(5, 5, 5, 5);
