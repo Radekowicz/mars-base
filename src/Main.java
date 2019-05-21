@@ -12,12 +12,6 @@ public class Main {
             new MainFrame();
         });
 
-//        List<Building> buildings = BuildingManager.getBuildings();
-//
-//        for (Building building: buildings) {
-//            System.out.println(building.getBuildingStatusAsString());
-//        }
-
         marsBaseSimulator.run();
     }
 }

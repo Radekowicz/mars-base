@@ -1,5 +1,19 @@
 package transport;
 
-public class SwiftRocket extends Rocket {
+import resources.ConsumablesPack;
+import resources.UnitsPack;
 
+public class SwiftRocket extends Rocket {
+    private static int number = 1;
+
+    public SwiftRocket(int speed, String name, ConsumablesPack maxCPCapacity, UnitsPack maxUPCapacity) {
+        super(1600, "Swift Rocket #" + number++,
+                new ConsumablesPack(0,400, 400, 200, 0,0),
+                new UnitsPack(5, 15));
+    }
+
+    @Override
+    public ConsumablesPack costOfFix() {
+        return new ConsumablesPack(250, 90, 180, 50, 30, 70);
+    }
 }

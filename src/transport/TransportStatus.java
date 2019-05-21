@@ -1,8 +1,10 @@
 package transport;
 
 public enum TransportStatus {
-    WAITNIG,
+    WAITING,
+    ON_THE_WAY,
     LOADED,
-    ON_THE_WAy,
-    UNLOADED
+    UNLOADED,
+    DAMAGED,
+    DESTROYED
 }

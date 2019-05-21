@@ -79,14 +79,13 @@ public abstract class Building implements Comparable<Building>, Destructible, Fi
 
     @Override
     public void damage() {
-
         Random random = new Random();
         int levelOfDamage = random.nextInt(101);
 
         if (levelOfDamage == 0) {
             return;
         }
-        else if (levelOfDamage == 100) {
+        else if (levelOfDamage == 100 || buildingStatus == BuildingStatus.DAMAGED) {
             buildingStatus = BuildingStatus.DESTROYED;
         }
 

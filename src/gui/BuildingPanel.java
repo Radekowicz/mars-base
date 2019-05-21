@@ -21,7 +21,6 @@ public class BuildingPanel extends JPanel {
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
         infoPanel = new JPanel();
-        infoPanel.setPreferredSize(new Dimension(1024, 600));
         infoPanel.setLayout(new BoxLayout(infoPanel, BoxLayout.Y_AXIS));
         infoPanel.add(new JLabel("Building name: "));
         infoPanel.add(new JLabel(building.getName()));
@@ -59,16 +58,15 @@ public class BuildingPanel extends JPanel {
             fixButton.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent event) {
-//                    if (!building.fix()) {
-//                        JOptionPane.showMessageDialog(null, "You need more resources to fix this building");
-//                    }
+                    if (!building.fix()) {
+                        JOptionPane.showMessageDialog(null, "You need more resources to fix this building");
+                    }
                 }
             });
             actionPanel.add(fixButton);
         }
 
-
-        Border innerBorderForAction = BorderFactory.createTitledBorder("Information");
+        Border innerBorderForAction = BorderFactory.createTitledBorder("Action");
         Border outerBorderForAction = BorderFactory.createEmptyBorder(5, 5, 5, 5);
         actionPanel.setBorder(BorderFactory.createCompoundBorder(outerBorderForAction, innerBorderForAction));
         add(actionPanel);

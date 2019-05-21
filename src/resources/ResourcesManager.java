@@ -18,15 +18,24 @@ public final class ResourcesManager {
     }
 
     public static void add(ConsumablesPack cP, UnitsPack uP){
+        add(cP);
+        add(uP);
+    }
+
+    public static void add(ConsumablesPack cP) {
         consumablesPack.addEnergy(cP.getEnergy());
         consumablesPack.addEarthMaterial(cP.getEarthMaterial());
         consumablesPack.addMarsMaterial(cP.getMarsMaterial());
         consumablesPack.addFood(cP.getFood());
         consumablesPack.addWater(cP.getWater());
         consumablesPack.addOxygen(cP.getOxygen());
+    }
+
+    public static void add(UnitsPack uP) {
         unitsPack.addHumans(uP.getHumans());
         unitsPack.addRobots(uP.getRobots());
     }
+
     public static boolean subtract(ConsumablesPack cP, UnitsPack uP){
         if(resourcesManager.isEnough(cP,uP)) {
             consumablesPack.subtractEnergy(cP.getEnergy());
@@ -41,19 +50,39 @@ public final class ResourcesManager {
         }
         return false;
     }
-    public static void showRecources(){
-        System.out.println("ENERGY: "+consumablesPack.getEnergy());
-        System.out.println("MARSMATERIAL: "+consumablesPack.getMarsMaterial());
-        System.out.println("EARTHMATERIAL: "+consumablesPack.getEarthMaterial());
-        System.out.println("WATER: "+consumablesPack.getWater());
-        System.out.println("FOOD: "+consumablesPack.getFood());
-        System.out.println("OXYGEN: "+consumablesPack.getOxygen());
-        System.out.println("HUMANS: "+unitsPack.getHumans());
-        System.out.println("ROBOTS: "+unitsPack.getRobots());
+
+    public static boolean subtract(ConsumablesPack cP) {
+        if (isEnough(cP)) {
+            consumablesPack.subtractEnergy(cP.getEnergy());
+            consumablesPack.subtractEarthMaterial(cP.getEarthMaterial());
+            consumablesPack.subtractMarsMaterial(cP.getMarsMaterial());
+            consumablesPack.subtractFood(cP.getFood());
+            consumablesPack.subtractWater(cP.getWater());
+            consumablesPack.subtractOxygen(cP.getOxygen());
+            return true;
+        }
+        return false;
+    }
+
+    public static boolean subtract(UnitsPack uP) {
+        if (isEnough(uP)) {
+            unitsPack.subtractHumans(uP.getHumans());
+            unitsPack.subtractRobots(uP.getRobots());
+            return true;
+        }
+        return false;
     }
 
     public static boolean isEnough(ConsumablesPack cP, UnitsPack uP){
         return consumablesPack.isEnough(cP) && unitsPack.isEnough(uP);
+    }
+
+    public static boolean isEnough(ConsumablesPack cP){
+        return consumablesPack.isEnough(cP);
+    }
+
+    public static boolean isEnough(UnitsPack uP){
+        return unitsPack.isEnough(uP);
     }
 
     public static long getEnergyStatus() {
@@ -87,4 +116,5 @@ public final class ResourcesManager {
     public static long getRobotStatus() {
         return unitsPack.getRobots();
     }
+
 }
