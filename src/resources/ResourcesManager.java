@@ -11,10 +11,9 @@ public final class ResourcesManager {
         this.unitsPack = unitsPack;
     }
 
-    public static ResourcesManager initializeResourcesManager(ConsumablesPack consumablesPack, UnitsPack unitsPack){
+    public static void initializeResourcesManager(ConsumablesPack consumablesPack, UnitsPack unitsPack){
         if(resourcesManager == null)
             resourcesManager = new ResourcesManager(consumablesPack, unitsPack);
-        return resourcesManager;
     }
 
     public static void add(ConsumablesPack cP, UnitsPack uP){
@@ -126,5 +125,9 @@ public final class ResourcesManager {
         System.out.println("OXYGEN: " + consumablesPack.getOxygen());
         System.out.println("HUMANS: " + unitsPack.getHumans());
         System.out.println("ROBOTS: " + unitsPack.getRobots());
+    }
+    public static void zeroing(){
+        consumablesPack.zeroing();
+        unitsPack.zeroing();
     }
 }
