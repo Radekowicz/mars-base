@@ -1,24 +1,35 @@
 package resources;
 
+import java.nio.file.AccessDeniedException;
+import java.rmi.AccessException;
+
 public final class ResourcesManager {
     private static ResourcesManager resourcesManager = null;
 
     private static ConsumablesPack consumablesPack;
     private static UnitsPack unitsPack;
 
-    private ResourcesManager(ConsumablesPack consumablesPack, UnitsPack unitsPack) {
-        this.consumablesPack = consumablesPack;
-        this.unitsPack = unitsPack;
+    private ResourcesManager(ConsumablesPack cP, UnitsPack uP) {
+        consumablesPack = cP;
+        unitsPack = uP;
     }
 
-    public static void initializeResourcesManager(ConsumablesPack consumablesPack, UnitsPack unitsPack){
+    public static void initializeResourcesManager(ConsumablesPack cP, UnitsPack uP){
         if(resourcesManager == null)
-            resourcesManager = new ResourcesManager(consumablesPack, unitsPack);
+            resourcesManager = new ResourcesManager(cP, uP);
+    }
+
+    public static void reset(ConsumablesPack cP, UnitsPack uP){
+        String caller = new Exception().getStackTrace()[1].getClassName();
+        if (!caller.equals("resources.ResourcesManagerTest"))
+           return;
+
+        resourcesManager = new ResourcesManager(cP, uP);
     }
 
     public static void add(ConsumablesPack cP, UnitsPack uP){
-        add(cP);
         add(uP);
+        add(cP);
     }
 
     public static void add(ConsumablesPack cP) {
