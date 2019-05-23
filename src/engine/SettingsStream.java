@@ -15,7 +15,7 @@ public final class SettingsStream {
     private SettingsStream() {}
 
     public static ConsumablesPack loadConsumablesPack() {
-        File file = new File("Options/CP.txt");
+        File file = new File("options/CP.txt");
 
         try {
             BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
@@ -35,7 +35,7 @@ public final class SettingsStream {
     }
 
     public static UnitsPack loadUnitsPack() {
-        File file = new File("Options/UP.txt");
+        File file = new File("options/UP.txt");
 
         try {
             BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
@@ -55,7 +55,7 @@ public final class SettingsStream {
     }
 
     public static ArrayList<Building> loadBuildings() {
-        File file = new File("Options/Buildings.txt");
+        File file = new File("options/Buildings.txt");
         ArrayList<Building> buildings = new ArrayList<>();
 
         try {
@@ -106,7 +106,7 @@ public final class SettingsStream {
     }
 
     public static ArrayList<Transport> loadTransports() {
-        File file = new File("Options/Transports.txt");
+        File file = new File("options/Transports.txt");
         ArrayList<Transport> transports = new ArrayList<>();
 
         try {
@@ -139,7 +139,7 @@ public final class SettingsStream {
     }
 
     public static int loadChanceForEvent() {
-        File file = new File("Options/EventOptions.txt");
+        File file = new File("options/EventOptions.txt");
 
         try {
             BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
@@ -154,7 +154,7 @@ public final class SettingsStream {
     }
 
     public static int loadTimeBreakForEvent() {
-        File file = new File("Options/EventOptions.txt");
+        File file = new File("options/EventOptions.txt");
 
         try {
             BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
@@ -168,5 +168,4 @@ public final class SettingsStream {
 
         return 10000;
     }
-
 }

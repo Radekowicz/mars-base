@@ -16,7 +16,7 @@ public class BuildingsPanel extends JPanel {
 
     private List<BuildingButton> buildingsButtons;
     private JButton addBuildingButton;
-    private BuildingsPanelListener buildingsPanelListener;
+    private BuildingsPanelListener buildingsPanelListener; // <----------------------
 
     public BuildingsPanel() {
         setPreferredSize(new Dimension(WIDTH, HEIGHT));

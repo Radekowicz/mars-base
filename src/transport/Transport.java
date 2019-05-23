@@ -17,24 +17,49 @@ public abstract class Transport implements Destructible, Fixable {
     private ConsumablesPack currentCP;
     private UnitsPack currentUP;
     private TransportStatus transportStatus;
+    private Place currentPlace;
+    private Place target;
+    private int distanceToDestiny;
+    private int timeOfUnload;
+    private int timeOfLoad;
 
-    private List<Target> possibleTargets;
+    private List<Place> possibleTargets;
 
-    public Transport(int speed, String name, ConsumablesPack maxCPCapacity, UnitsPack maxUPCapacity) {
+    public Transport(int speed, String name, ConsumablesPack maxCPCapacity, UnitsPack maxUPCapacity, List<Place> possibleTargets) {
         this.speed = speed;
         this.name = name;
         this.maxCPCapacity = maxCPCapacity;
         this.maxUPCapacity = maxUPCapacity;
         this.currentCP = new ConsumablesPack(0,0,0,0,0,0);
         this.currentUP = new UnitsPack(0,0);
+        this.possibleTargets = possibleTargets;
         this.transportStatus = TransportStatus.ON_THE_WAY;
+        this.currentPlace = Place.SPACE;
+        this.target = Place.MARS;
     }
 
     public String getName() {
         return this.name;
     }
 
+    public Place getTarget() {
+        return target;
+    }
+
+    public void setTarget(Place target) {
+        if (target != null)
+
+        this.target = target;
+    }
+
+    public Place getCurrentPlace() {
+        return currentPlace;
+    }
+
     public void load(ConsumablesPack CP, UnitsPack UP) {
+        if (--timeOfLoad != 0)
+            return;
+
         if (CP.getWater() > maxCPCapacity.getWater())
             this.currentCP.addWater(maxCPCapacity.getWater());
         else
@@ -62,6 +87,10 @@ public abstract class Transport implements Destructible, Fixable {
     }
 
     public void unload() {
+        if (--timeOfUnload == 0) {
+
+        }
+
         ResourcesManager.add(currentCP, currentUP);
         this.currentCP.zeroing();
         this.currentUP.zeroing();
@@ -121,9 +150,31 @@ public abstract class Transport implements Destructible, Fixable {
         return status;
     }
 
-    public abstract ConsumablesPack costOfFix();
+    public void move() {
+        if (transportStatus != TransportStatus.ON_THE_WAY)
+            return;
 
-    protected void setPossibleTargets(List<Target> possibleTargets) {
-        this.possibleTargets = possibleTargets;
+        if ((distanceToDestiny - speed) <= 0) {
+            distanceToDestiny = 0;
+            currentPlace = target;
+            target = null;
+        }
+
+        distanceToDestiny -= speed;
     }
+
+    public boolean send(Place target, int distanceToDestiny) {
+        if (distanceToDestiny <= 0)
+            throw new IllegalArgumentException("distance must be positive");
+
+        this.target = target;
+        this.distanceToDestiny = distanceToDestiny;
+        ResourcesManager.subtract(requiredResourcesToStart());
+        return true;
+    }
+
+    public abstract ConsumablesPack costOfFix();
+    public abstract ConsumablesPack requiredResourcesToStart();
+    public abstract int timeOfUnload();
+    public abstract int timeOfLoad();
 }

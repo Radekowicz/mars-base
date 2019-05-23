@@ -12,7 +12,7 @@ public class SolarPanel extends Building {
 
     @Override
     public ConsumablesPack generateResources() {
-        return new ConsumablesPack(0,100,0,0,0,0);
+        return new ConsumablesPack(100,0,0,0,0,0);
     }
 
     @Override

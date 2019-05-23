@@ -8,13 +8,14 @@ public final class EventManager {
     private static int chanceForEvent;
     private static int originalTimeBreak;
     private static int currentTimeBreak;
-    private static int n;
+    private static int numberUnsuccessfulAttempts;
+    private static EventListener eventListener;
 
     public EventManager(int chanceForEvent, int originalTimeBreak) {
         this.chanceForEvent = chanceForEvent;
         this.originalTimeBreak = originalTimeBreak;
         currentTimeBreak = originalTimeBreak;
-        n = 1;
+        numberUnsuccessfulAttempts = 1;
     }
 
     public static void initializeEventManager(int chanceForEvent, int originalTimeBreak) {
@@ -34,8 +35,8 @@ public final class EventManager {
                 currentTimeBreak = originalTimeBreak;
             }
             else{
-                currentTimeBreak = originalTimeBreak / (int)Math.pow(2, n);
-                n++;
+                currentTimeBreak = originalTimeBreak / (int)Math.pow(2, numberUnsuccessfulAttempts);
+                numberUnsuccessfulAttempts++;
             }
         }
     }
@@ -45,8 +46,12 @@ public final class EventManager {
         int choose = random.nextInt(101);
 
         if (choose < 20)
-            return new MeteorShower();
+            return new MeteorShower(eventListener);
         else
-            return new Sandstorm();
+            return new Sandstorm(eventListener);
+    }
+
+    public static void setEventListener(EventListener eventListener) {
+        EventManager.eventListener = eventListener;
     }
 }

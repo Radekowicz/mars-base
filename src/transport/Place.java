@@ -1,8 +1,9 @@
 package transport;
 
-public enum Target {
+public enum Place {
     EARTH,
     ASTEROID,
     PLANETOID,
-    MARS_SURFACE
+    SPACE,
+    MARS
 }
