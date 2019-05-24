@@ -65,8 +65,7 @@ public final class TransportManager {
         if (transport.getTransportStatus() != TransportStatus.WAITING)
             return false;
 
-        transport.send(target, determineDistance(target));
-        return true;
+        return transport.send(target, determineDistance(target));
     }
 
     private static boolean orderIsPossible() {
@@ -85,7 +84,7 @@ public final class TransportManager {
                 ordered = true;
                 break;
             case "SwiftRocket":
-                transports.add(new BFRocket());
+                transports.add(new SwiftRocket());
                 ordered = true;
                 break;
             case "Truck":

@@ -5,5 +5,6 @@ public enum Place {
     ASTEROID,
     PLANETOID,
     SPACE,
-    MARS
+    MARS,
+    BASE
 }
