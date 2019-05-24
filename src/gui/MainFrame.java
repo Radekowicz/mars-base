@@ -1,5 +1,6 @@
 package gui;
 
+import events.DescriptionPublisher;
 import events.Event;
 import events.EventListener;
 
@@ -66,8 +67,8 @@ public class MainFrame extends JFrame implements EventListener {
     }
 
     @Override
-    public void eventOccurred(Event event) {
-        eventPanel.setInformation(event.getDescribed());
+    public void eventOccurred(DescriptionPublisher descriptionPublisher) {
+        eventPanel.setInformation(descriptionPublisher.getDescribed());
         eventPanel.setVisible(true);
         eventPanel.validate();
         eventPanel.repaint();

@@ -29,4 +29,11 @@ public final class UnitsPack {
         this.humans = 0;
         this.robots = 0;
     }
+
+    @Override
+    public String toString() {
+        return "Units Pack: " +
+                "Human {" + this.humans + "}" +
+                "Robot {" + this.robots + "}";
+    }
 }

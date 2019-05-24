@@ -21,14 +21,4 @@ public class BFRocket extends Rocket {
     public ConsumablesPack requiredResourcesToStart() {
         return new ConsumablesPack(14000, 0,0,0,0,800);
     }
-
-    @Override
-    public int timeOfUnload() {
-        return 7;
-    }
-
-    @Override
-    public int timeOfLoad() {
-        return 12;
-    }
 }

@@ -1,6 +1,8 @@
 package transport;
 
+import events.DescriptionPublisher;
 import events.Destructible;
+import events.EventListener;
 import events.Fixable;
 import resources.ConsumablesPack;
 import resources.ResourcesManager;
@@ -9,7 +11,10 @@ import resources.UnitsPack;
 import java.util.List;
 import java.util.Random;
 
-public abstract class Transport implements Destructible, Fixable {
+/**
+ *
+ */
+public abstract class Transport implements Destructible, Fixable, DescriptionPublisher {
     private int speed;
     private String name;
     private ConsumablesPack maxCPCapacity;
@@ -20,9 +25,6 @@ public abstract class Transport implements Destructible, Fixable {
     private Place currentPlace;
     private Place target;
     private int distanceToDestiny;
-    private int timeOfUnload;
-    private int timeOfLoad;
-
     private List<Place> possibleTargets;
 
     public Transport(int speed, String name, ConsumablesPack maxCPCapacity, UnitsPack maxUPCapacity, List<Place> possibleTargets) {
@@ -47,9 +49,8 @@ public abstract class Transport implements Destructible, Fixable {
     }
 
     public void setTarget(Place target) {
-        if (target != null)
-
-        this.target = target;
+        if (target == null)
+            this.target = target;
     }
 
     public Place getCurrentPlace() {
@@ -57,9 +58,6 @@ public abstract class Transport implements Destructible, Fixable {
     }
 
     public void load(ConsumablesPack CP, UnitsPack UP) {
-        if (--timeOfLoad != 0)
-            return;
-
         if (CP.getWater() > maxCPCapacity.getWater())
             this.currentCP.addWater(maxCPCapacity.getWater());
         else
@@ -84,16 +82,19 @@ public abstract class Transport implements Destructible, Fixable {
             this.currentUP.addHumans(maxUPCapacity.getHumans());
         else
             this.currentUP.addHumans(UP.getHumans());
+
+        this.transportStatus = TransportStatus.ON_THE_WAY;
+        this.currentPlace = Place.SPACE;
     }
 
-    public void unload() {
-        if (--timeOfUnload == 0) {
 
-        }
-
+    public void unload(EventListener eventListener) {
+        eventListener.eventOccurred(this);
         ResourcesManager.add(currentCP, currentUP);
         this.currentCP.zeroing();
         this.currentUP.zeroing();
+        this.transportStatus = TransportStatus.WAITING;
+        this.currentPlace = Place.MARS;
     }
 
     @Override
@@ -157,7 +158,7 @@ public abstract class Transport implements Destructible, Fixable {
         if ((distanceToDestiny - speed) <= 0) {
             distanceToDestiny = 0;
             currentPlace = target;
-            target = null;
+            target = Place.MARS;
         }
 
         distanceToDestiny -= speed;
@@ -173,8 +174,23 @@ public abstract class Transport implements Destructible, Fixable {
         return true;
     }
 
+    public TransportStatus getTransportStatus() {
+        return transportStatus;
+    }
+
+    public int getDistanceToDestiny() {
+        return distanceToDestiny;
+    }
+
+    public List<Place> getPossibleTargets() {
+        return possibleTargets;
+    }
+
+    @Override
+    public String getDescribed() {
+        return name + " came back! It brought with itself " + currentCP.toString() + " and " + currentUP.toString();
+    }
+
     public abstract ConsumablesPack costOfFix();
     public abstract ConsumablesPack requiredResourcesToStart();
-    public abstract int timeOfUnload();
-    public abstract int timeOfLoad();
 }

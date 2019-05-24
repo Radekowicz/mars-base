@@ -6,7 +6,6 @@ import resources.UnitsPack;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 public class Truck extends Transport {
     private static int number = 1;
@@ -25,17 +24,7 @@ public class Truck extends Transport {
 
     @Override
     public ConsumablesPack requiredResourcesToStart() {
-        return null;
-    }
-
-    @Override
-    public int timeOfUnload() {
-        return 1;
-    }
-
-    @Override
-    public int timeOfLoad() {
-        return 2;
+        return new ConsumablesPack(50,0,0,5,0,0);
     }
 
     @Override

@@ -21,14 +21,4 @@ public class SwiftRocket extends Rocket {
     public ConsumablesPack requiredResourcesToStart() {
         return new ConsumablesPack(3000, 0,0,100,0,300);
     }
-
-    @Override
-    public int timeOfUnload() {
-        return 4;
-    }
-
-    @Override
-    public int timeOfLoad() {
-        return 9;
-    }
 }

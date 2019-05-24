@@ -66,4 +66,15 @@ public final class ConsumablesPack {
         this.food = 0;
         this.oxygen = 0;
     }
+
+    @Override
+    public String toString() {
+        return "Consumables Pack: " +
+                "Energy {" + this.energy + "}" +
+                "Water {" + this.water + "}" +
+                "Oxygen {" + this.oxygen+ "}" +
+                "Food {" + this.food + "}" +
+                "Mars Material {" + this.marsMaterial + "}" +
+                "Earth Material {" + this.earthMaterial+ "}";
+    }
 }
