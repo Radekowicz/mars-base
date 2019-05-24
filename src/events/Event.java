@@ -1,6 +1,6 @@
 package events;
 
-public abstract class Event {
+public abstract class Event implements DescriptionPublisher {
     private EventListener eventListener;
 
     public Event(EventListener eventListener) {
@@ -10,6 +10,4 @@ public abstract class Event {
     public void execute() {
         eventListener.eventOccurred(this);
     }
-
-    public abstract String getDescribed();
 }

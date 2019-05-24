@@ -4,6 +4,8 @@ import buildings.BuildingManager;
 import events.Event;
 import events.EventManager;
 import gui.MainFrame;
+import resources.ResourcesManager;
+import transport.TransportManager;
 
 import java.awt.*;
 
@@ -17,6 +19,7 @@ public final class MarsBaseSimulator {
             public void run() {
                 mainFrame = new MainFrame();
                 EventManager.setEventListener(mainFrame);
+                TransportManager.setEventListener(mainFrame);
             }
         });
     }
@@ -24,7 +27,7 @@ public final class MarsBaseSimulator {
     public void run() {
         while (true) {
             BuildingManager.update();
-            //TransportManager.update();
+            TransportManager.update();
             EventManager.tryTriggerEvent();
             try {
                 Thread.sleep(1000);

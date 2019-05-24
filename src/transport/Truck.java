@@ -6,13 +6,12 @@ import resources.UnitsPack;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 public class Truck extends Transport {
     private static int number = 1;
 
     public Truck() {
-        super(10, "Truck #" + number++,
+        super(100, "Truck #" + number++,
                 new ConsumablesPack(0,50,50,200,0,0),
                 new UnitsPack(2,0),
                 new ArrayList<>(Arrays.asList(Place.MARS)));
@@ -25,17 +24,7 @@ public class Truck extends Transport {
 
     @Override
     public ConsumablesPack requiredResourcesToStart() {
-        return null;
-    }
-
-    @Override
-    public int timeOfUnload() {
-        return 1;
-    }
-
-    @Override
-    public int timeOfLoad() {
-        return 2;
+        return new ConsumablesPack(50,0,0,5,0,0);
     }
 
     @Override
@@ -44,6 +33,5 @@ public class Truck extends Transport {
             return false;
 
         return super.send(target, distanceToDestiny);
-
     }
 }

@@ -6,5 +6,6 @@ public enum TransportStatus {
     LOADED,
     UNLOADED,
     DAMAGED,
-    DESTROYED
+    DESTROYED,
+    ORDERED
 }
