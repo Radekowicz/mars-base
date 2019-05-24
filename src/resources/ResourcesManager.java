@@ -1,5 +1,7 @@
 package resources;
 
+import buildings.BuildingManager;
+
 public final class ResourcesManager {
     private static ResourcesManager resourcesManager = null;
 
@@ -30,8 +32,20 @@ public final class ResourcesManager {
         consumablesPack.addOxygen(cP.getOxygen());
     }
 
+    //jeśli gracz będzie chciał dodać więcej Human niż jest Capacity to zostanie odrzucony a interfejs wypisze ile Max Human może dodać ( howManyPlacesAvailable() )
+
+    public static boolean canAdd (UnitsPack uP) {
+        return(BuildingManager.getMaxHumanCapacity() - getHumanStatus() >= uP.getHumans());
+    }
+
+    public static long howManyPlacesAvailable() {
+        return BuildingManager.getMaxHumanCapacity() - getHumanStatus();
+    }
+
     public static void add(UnitsPack uP) {
-        unitsPack.addHumans(uP.getHumans());
+        if(canAdd(uP)) {
+            unitsPack.addHumans(uP.getHumans());
+        }
         unitsPack.addRobots(uP.getRobots());
     }
 

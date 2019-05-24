@@ -1,7 +1,6 @@
 package buildings;
 
 import resources.ConsumablesPack;
-import buildings.Building;
 import resources.ResourcesManager;
 import resources.UnitsPack;
 
@@ -11,22 +10,21 @@ import java.util.List;
 
 public final class BuildingManager {
     private static BuildingManager buildingManager = null;
+    private static long maximalCapacityOfHub = 50;
 
-    ConsumablesPack ConsumablesPack;
     private static List<Building> buildings;
 
-    private BuildingManager(ConsumablesPack ConsumablesPack, List<Building> buildings) {
-        this.ConsumablesPack = ConsumablesPack;
+    private BuildingManager(List<Building> buildings) {
         this.buildings = buildings;
         Collections.sort(buildings);
     }
 
     public static void initializeBuildingManager(ConsumablesPack ConsumablesPack, List<Building> buildings) {
         if (buildingManager == null)
-            buildingManager = new BuildingManager(ConsumablesPack, buildings);
+            buildingManager = new BuildingManager(buildings);
     }
 
-    public static boolean build(Building building) {
+    public static boolean canBuild(Building building) {
         if (ResourcesManager.isEnough(building.costOfBuildingInConsumables(), new UnitsPack(0,0))) return true;
         else return false;
     }
@@ -50,6 +48,21 @@ public final class BuildingManager {
         }
         buildingsToRemove.removeAll(buildingsToRemove);
 
+    }
+
+    public static void addBuilding(Building building) {
+        if(canBuild(building)) {
+            buildings.add(building);
+            ResourcesManager.subtract(building.costOfBuildingInConsumables());
+        }
+    }
+
+    public static long getMaxHumanCapacity () {
+        int amount = 0;
+        for (Building building : buildings) {
+            if (building instanceof Hub) amount++;
+        }
+        return amount * maximalCapacityOfHub;
     }
 
 

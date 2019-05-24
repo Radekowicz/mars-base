@@ -69,7 +69,7 @@ public abstract class Building implements Comparable<Building>, Destructible, Fi
                 status = "awaiting";
                 break;
             case IN_BUILD:
-                status = "in build";
+                status = "in canBuild";
             default:
                 break;
         }
