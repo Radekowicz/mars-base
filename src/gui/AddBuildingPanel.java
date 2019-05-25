@@ -1,8 +1,6 @@
 package gui;
 
-import buildings.Building;
-import buildings.BuildingManager;
-import buildings.Hub;
+import buildings.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -46,25 +44,25 @@ public class AddBuildingPanel extends JPanel {
                         result = BuildingManager.addBuilding(new Hub());
                         break;
                     case 1:
-                        result = BuildingManager.addBuilding(new Hub());
+                        result = BuildingManager.addBuilding(new ColdFusionPowerPlant());
                         break;
                     case 2:
-                        result = BuildingManager.addBuilding(new Hub());
+                        result = BuildingManager.addBuilding(new Greenhouse());
                         break;
                     case 3:
-                        result = BuildingManager.addBuilding(new Hub());
+                        result = BuildingManager.addBuilding(new OpenPitMine());
                         break;
                     case 4:
-                        result = BuildingManager.addBuilding(new Hub());
+                        result = BuildingManager.addBuilding(new OxygenGenerator());
                         break;
                     case 5:
-                        result = BuildingManager.addBuilding(new Hub());
+                        result = BuildingManager.addBuilding(new PrintStation());
                         break;
                     case 6:
-                        result = BuildingManager.addBuilding(new Hub());
+                        result = BuildingManager.addBuilding(new RobotStation());
                         break;
                     case 7:
-                        result = BuildingManager.addBuilding(new Hub());
+                        result = BuildingManager.addBuilding(new SolarPanel());
                         break;
                     default:
                         break;

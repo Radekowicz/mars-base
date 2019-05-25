@@ -22,7 +22,7 @@ public final class BuildingManager {
         Collections.sort(buildings);
     }
 
-    public static void initializeBuildingManager(ConsumablesPack ConsumablesPack, List<Building> buildings) {
+    public static void initializeBuildingManager(List<Building> buildings) {
         if (buildingManager == null)
             buildingManager = new BuildingManager(buildings);
     }

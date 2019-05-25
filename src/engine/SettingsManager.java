@@ -20,11 +20,11 @@ public final class SettingsManager {
         ResourcesManager.initializeResourcesManager(CP, UP);
 
         ArrayList<Building> buildings = SettingsStream.loadBuildings();
-        BuildingManager.initializeBuildingManager(CP, buildings);
+        BuildingManager.initializeBuildingManager(buildings);
 
         ArrayList<Transport> transports = SettingsStream.loadTransports();
-        //int transportOredBreak = SettingsStream.loadTransportOrderBreak();
-        TransportManager.initializeResourcesManager(transports, 660);
+        //int transportOrderBreak = SettingsStream.loadTransportOrderBreak();
+        TransportManager.initializeResourcesManager(transports, 1);
 
         int chanceForEvent = SettingsStream.loadChanceForEvent();
         int timeBreakForEvent = SettingsStream.loadTimeBreakForEvent();

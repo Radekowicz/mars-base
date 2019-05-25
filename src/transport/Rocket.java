@@ -10,7 +10,7 @@ import java.util.Arrays;
 public abstract class Rocket extends Transport {
     public Rocket(int speed, String name, ConsumablesPack maxCPCapacity, UnitsPack maxUPCapacity) {
         super(speed, name, maxCPCapacity, maxUPCapacity, new ArrayList<>(Arrays.asList(
-                Place.ASTEROID, Place.ASTEROID, Place.EARTH, Place.MARS)));
+                Place.ASTEROID, Place.PLANETOID, Place.EARTH)));
     }
 
     @Override
