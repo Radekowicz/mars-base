@@ -20,7 +20,8 @@ public final class SettingsManager {
         ResourcesManager.initializeResourcesManager(CP, UP);
 
         ArrayList<Building> buildings = SettingsStream.loadBuildings();
-        BuildingManager.initializeBuildingManager(CP, buildings);
+        ArrayList<Building> inBuildBuildings = SettingsStream.loadBuildings(); //tu dodałem coś żeby działało po dodaniu inBuildBuildigs
+        BuildingManager.initializeBuildingManager(buildings, inBuildBuildings);
 
         ArrayList<Transport> transports = SettingsStream.loadTransports();
         //int transportOredBreak = SettingsStream.loadTransportOrderBreak();

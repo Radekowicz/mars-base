@@ -16,15 +16,17 @@ public final class BuildingManager {
     private static long maximalCapacityOfHub = 50;
 
     private static List<Building> buildings;
+    private static List<Building> inBuildBuildings;
 
-    private BuildingManager(List<Building> buildings) {
+    private BuildingManager(List<Building> buildings, List<Building> inBuildBuildings) {
         this.buildings = buildings;
+        this.inBuildBuildings = inBuildBuildings;
         Collections.sort(buildings);
     }
 
-    public static void initializeBuildingManager(ConsumablesPack ConsumablesPack, List<Building> buildings) {
+    public static void initializeBuildingManager(List<Building> buildings,  List<Building> inBuildBuildings) {
         if (buildingManager == null)
-            buildingManager = new BuildingManager(buildings);
+            buildingManager = new BuildingManager(buildings, inBuildBuildings);
     }
 
     public static boolean canBuild(Building building) {
@@ -34,6 +36,20 @@ public final class BuildingManager {
     
     public static void update() {
         List<Building> buildingsToRemove = new ArrayList<>();
+
+        for (Building building : inBuildBuildings) {
+            building.decreaseCounter();
+            if(building.isReady()) {
+                buildings.add(building);
+                buildingsToRemove.add(building);
+            }
+        }
+
+        for (Building building : buildingsToRemove) {
+            inBuildBuildings.remove(building);
+        }
+
+        buildingsToRemove.removeAll(buildingsToRemove);
 
         for (Building building : buildings) {
             if (building.getBuildingStatus() == BuildingStatus.WORKING) {
@@ -55,7 +71,7 @@ public final class BuildingManager {
 
     public static boolean addBuilding(Building building) {
         if (canBuild(building)) {
-            buildings.add(building);
+            inBuildBuildings.add(building);
             ResourcesManager.subtract(building.costOfBuildingInConsumables());
             return true;
         }

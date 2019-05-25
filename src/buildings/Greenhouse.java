@@ -7,7 +7,7 @@ public class Greenhouse extends Building {
     private static int buildingNumber = 1;
 
     public Greenhouse() {
-        super("Greenhouse" + buildingNumber++);
+        super("Greenhouse #" + buildingNumber++);
     }
 
 
@@ -22,10 +22,7 @@ public class Greenhouse extends Building {
     }
 
     @Override
-    public ConsumablesPack costOfBuildingInConsumables() {
-        return new ConsumablesPack(200, 500,300,0, 0, 0);
-
-    }
+    public ConsumablesPack costOfBuildingInConsumables() { return new ConsumablesPack(200, 500,300,0, 0, 0); }
 
     @Override
     public UnitsPack costOfBuildingInConsumablesInUnits() {
