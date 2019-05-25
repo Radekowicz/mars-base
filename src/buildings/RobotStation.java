@@ -26,7 +26,7 @@ public class RobotStation extends Building {
     }
 
     @Override
-    public UnitsPack costOfBuildingInConsumablesInUnits() {
+    public UnitsPack costOfBuildingInUnits() {
         return new UnitsPack(0, 8);
     }
 

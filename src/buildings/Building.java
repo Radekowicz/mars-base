@@ -29,7 +29,7 @@ public abstract class Building implements Comparable<Building>, Destructible, Fi
     public abstract ConsumablesPack generateResources();
     public abstract ConsumablesPack consumeResources();
     public abstract ConsumablesPack costOfBuildingInConsumables();
-    public abstract UnitsPack costOfBuildingInConsumablesInUnits();
+    public abstract UnitsPack costOfBuildingInUnits();
 
     public abstract int timeOfBuild();
     public String getName() {
@@ -37,9 +37,6 @@ public abstract class Building implements Comparable<Building>, Destructible, Fi
     }
     public abstract Integer getPriority();
 
-    public int getCounter() {
-        return counter;
-    }
     public void decreaseCounter() {
         counter--;
     }
