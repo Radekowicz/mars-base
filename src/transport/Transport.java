@@ -39,9 +39,9 @@ public abstract class Transport implements Destructible, Fixable, DescriptionPub
         this.currentCP = new ConsumablesPack(0,0,0,0,0,0);
         this.currentUP = new UnitsPack(0,0);
         this.possibleTargets = possibleTargets;
-        this.transportStatus = TransportStatus.ORDERED;
-        this.orderedSpeed = 4900;
-        this.currentPlace = Place.SPACE;
+        this.transportStatus = TransportStatus.WAITING;
+        this.orderedSpeed = 490000;
+        this.currentPlace = Place.BASE;
         this.target = Place.BASE;
         this.distanceToDestiny = TransportManager.determineDistance(Place.EARTH);
         returning = true;
@@ -66,6 +66,7 @@ public abstract class Transport implements Destructible, Fixable, DescriptionPub
     }
 
     public void move() {
+        System.out.println("XD");
         if ((distanceToDestiny - speed) <= 0) {
             distanceToDestiny = 0;
             currentPlace = target;

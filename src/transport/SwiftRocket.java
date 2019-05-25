@@ -7,7 +7,7 @@ public class SwiftRocket extends Rocket {
     private static int number = 1;
 
     public SwiftRocket() {
-        super(1600, "Swift Rocket #" + number++,
+        super(40000, "Swift Rocket #" + number++,
                 new ConsumablesPack(0,400, 400, 200, 0,0),
                 new UnitsPack(5, 15));
     }

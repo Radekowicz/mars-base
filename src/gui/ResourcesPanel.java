@@ -1,5 +1,6 @@
 package gui;
 
+import buildings.BuildingManager;
 import resources.ResourcesManager;
 
 import javax.swing.*;
@@ -20,6 +21,7 @@ public class ResourcesPanel extends JPanel {
     private JLabel earthMaterialArea;
 
     private JLabel humanArea;
+    private JLabel maxCapacityHumanArea;
     private JLabel robotArea;
 
     public ResourcesPanel() {
@@ -33,6 +35,7 @@ public class ResourcesPanel extends JPanel {
         marsMaterialArea = new JLabel("" + ResourcesManager.getMarsMaterialStatus());
         earthMaterialArea = new JLabel("" + ResourcesManager.getEarthMaterialStatus());
         humanArea = new JLabel("" + ResourcesManager.getHumanStatus());
+        maxCapacityHumanArea = new JLabel("of " + BuildingManager.getMaxHumanCapacity());
         robotArea = new JLabel("" + ResourcesManager.getRobotStatus());
 
         add(new JLabel("Resources: "));
@@ -52,6 +55,7 @@ public class ResourcesPanel extends JPanel {
         add(new JLabel("Units:"));
         add(new JLabel("Human:"));
         add(humanArea);
+        add(maxCapacityHumanArea);
         add(new JLabel("Robot:"));
         add(robotArea);
 
@@ -73,6 +77,7 @@ public class ResourcesPanel extends JPanel {
         marsMaterialArea.setText("" + ResourcesManager.getMarsMaterialStatus());
         earthMaterialArea.setText("" + ResourcesManager.getEarthMaterialStatus());
         humanArea.setText("" + ResourcesManager.getHumanStatus());
+        maxCapacityHumanArea = new JLabel("of " + BuildingManager.getMaxHumanCapacity());
         robotArea.setText("" + ResourcesManager.getRobotStatus());
     }
 }
