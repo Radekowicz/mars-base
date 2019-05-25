@@ -85,7 +85,7 @@ public abstract class Building implements Comparable<Building>, Destructible, Fi
         if (levelOfDamage == 0) {
             return;
         }
-        else if (levelOfDamage == 100 || buildingStatus == BuildingStatus.DAMAGED) {
+        else if (levelOfDamage == 100 || buildingStatus == BuildingStatus.DAMAGED || buildingStatus == BuildingStatus.IN_BUILD) {
             buildingStatus = BuildingStatus.DESTROYED;
         }
 

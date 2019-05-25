@@ -17,6 +17,7 @@ public class TransportsPanel extends JPanel {
     private List<TransportButton> transportsButtons;
     private JButton orderTransportButton;
     private TransportsPanelListener transportsPanelListener;
+    private OrderTransportListener orderTransportListener;
 
     public TransportsPanel() {
         setPreferredSize(new Dimension(WIDTH, HEIGHT));
@@ -43,7 +44,11 @@ public class TransportsPanel extends JPanel {
         orderTransportButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent event) {
+                OrderTransportButtonEvent orderTransportButtonEvent = new OrderTransportButtonEvent(event);
 
+                if (orderTransportButtonEvent != null) {
+                    orderTransportListener.orderTransportButtonOccurred(orderTransportButtonEvent);
+                }
             }
         });
 
@@ -54,4 +59,7 @@ public class TransportsPanel extends JPanel {
         this.transportsPanelListener = transportsPanelListener;
     }
 
+    public void setOrderTransportListener(OrderTransportListener orderTransportListener) {
+        this.orderTransportListener = orderTransportListener;
+    }
 }

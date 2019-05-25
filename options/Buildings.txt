@@ -1,5 +1,8 @@
+ColdFusionPowerPlant
+Greenhouse
 Hub
-Hub
-SolarPanel
-PrintStation
+OpenPitMine
 OxygenGenerator
+PrintStation
+RobotStation
+SolarPanel

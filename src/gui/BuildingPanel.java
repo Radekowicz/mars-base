@@ -39,6 +39,8 @@ public class BuildingPanel extends JPanel {
                 @Override
                 public void actionPerformed(ActionEvent event) {
                     building.setBuildingStatus(BuildingStatus.CLOSED);
+                    validate();
+
                 }
             });
             actionPanel.add(stopWorkingButton);
@@ -49,6 +51,8 @@ public class BuildingPanel extends JPanel {
                 @Override
                 public void actionPerformed(ActionEvent event) {
                     building.setBuildingStatus(BuildingStatus.WORKING);
+                    validate();
+                    repaint();
                 }
             });
             actionPanel.add(startWorkingButton);

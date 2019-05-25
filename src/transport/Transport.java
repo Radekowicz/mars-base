@@ -8,6 +8,7 @@ import resources.ConsumablesPack;
 import resources.ResourcesManager;
 import resources.UnitsPack;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -78,8 +79,8 @@ public abstract class Transport implements Destructible, Fixable, DescriptionPub
 
         if (transportStatus == TransportStatus.ORDERED)
             distanceToDestiny -= orderedSpeed;
-
-        distanceToDestiny -= speed;
+        else
+            distanceToDestiny -= speed;
     }
 
     public void load(ConsumablesPack CP, UnitsPack UP) {
@@ -178,24 +179,20 @@ public abstract class Transport implements Destructible, Fixable, DescriptionPub
 
         switch (transportStatus) {
             case WAITING:
-                status = "waiting";
-                break;
+                return "waiting";
             case DAMAGED:
-                status = "damaged";
-                break;
+                return "damaged";
             case LOADED:
-                status = "loading";
-                break;
+                return "loading";
             case UNLOADED:
-                status = "unloading";
-                break;
+                return "unloading";
             case ON_THE_WAY:
                 status = "on the way";
+            case ORDERED:
+                status = "ordered";
             default:
-                break;
+                return status;
         }
-
-        return status;
     }
 
     public TransportStatus getTransportStatus() {
@@ -217,6 +214,16 @@ public abstract class Transport implements Destructible, Fixable, DescriptionPub
 
     public boolean isReturning() {
         return returning;
+    }
+
+    public ArrayList<String> getPossibleTargetsAsStringList() {
+        ArrayList<String> targets = new ArrayList<>();
+
+        for (Place place : possibleTargets) {
+            targets.add(Place.placeAsString(place));
+        }
+
+        return targets;
     }
 
     public abstract ConsumablesPack costOfFix();

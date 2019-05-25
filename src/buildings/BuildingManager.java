@@ -8,6 +8,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ *
+ */
 public final class BuildingManager {
     private static BuildingManager buildingManager = null;
     private static long maximalCapacityOfHub = 50;
@@ -50,11 +53,14 @@ public final class BuildingManager {
 
     }
 
-    public static void addBuilding(Building building) {
-        if(canBuild(building)) {
+    public static boolean addBuilding(Building building) {
+        if (canBuild(building)) {
             buildings.add(building);
             ResourcesManager.subtract(building.costOfBuildingInConsumables());
+            return true;
         }
+
+        return false;
     }
 
     public static long getMaxHumanCapacity () {

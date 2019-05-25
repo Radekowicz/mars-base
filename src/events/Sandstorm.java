@@ -19,7 +19,6 @@ public class Sandstorm extends Event {
     @Override
     public void execute() {
         List<Destructible> destructibleObjects = new ArrayList<>();
-        destructibleObjects.addAll(TransportManager.getTransports());
         destructibleObjects.addAll(BuildingManager.getBuildings());
 
         super.execute();

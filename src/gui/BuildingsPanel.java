@@ -16,7 +16,8 @@ public class BuildingsPanel extends JPanel {
 
     private List<BuildingButton> buildingsButtons;
     private JButton addBuildingButton;
-    private BuildingsPanelListener buildingsPanelListener; // <----------------------
+    private BuildingsPanelListener buildingsPanelListener;
+    private AddBuildingListener addBuildingListener;
 
     public BuildingsPanel() {
         setPreferredSize(new Dimension(WIDTH, HEIGHT));
@@ -43,7 +44,11 @@ public class BuildingsPanel extends JPanel {
         addBuildingButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent event) {
+                AddBuildingButtonEvent addBuildingButtonEvent = new AddBuildingButtonEvent(event);
 
+                if (addBuildingButtonEvent != null) {
+                    addBuildingListener.AddBuildingButtonOccurred(addBuildingButtonEvent);
+                }
             }
         });
 
@@ -52,5 +57,9 @@ public class BuildingsPanel extends JPanel {
 
     public void setBuildingsPanelListener(BuildingsPanelListener buildingPanelListener) {
         this.buildingsPanelListener = buildingPanelListener;
+    }
+
+    public void setAddBuildingListener(AddBuildingListener addBuildingListener) {
+        this.addBuildingListener = addBuildingListener;
     }
 }

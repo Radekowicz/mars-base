@@ -79,14 +79,11 @@ public final class SettingsStream {
                     case "OxygenGenerator":
                         buildings.add(new OxygenGenerator());
                         break;
-                    case "PrintStation":
-                        buildings.add(new PrintStation());
-                        break;
                     case "RobotStation":
                         buildings.add(new RobotStation());
                         break;
-                    case "RocketStation":
-                        buildings.add(new RobotStation());
+                    case "PrintStation":
+                        buildings.add(new PrintStation());
                         break;
                     case "SolarPanel":
                         buildings.add(new SolarPanel());

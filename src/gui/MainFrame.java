@@ -40,9 +40,29 @@ public class MainFrame extends JFrame implements EventListener {
             }
         });
 
+        buildingsPanel.setAddBuildingListener(new AddBuildingListener() {
+            @Override
+            public void AddBuildingButtonOccurred(AddBuildingButtonEvent event) {
+                bottomPanel.removeAll();
+                bottomPanel.add(event.getPanel());
+                bottomPanel.revalidate();
+                bottomPanel.repaint();
+            }
+        });
+
         transportsPanel.setTransportsPanelListener(new TransportsPanelListener() {
             @Override
             public void TransportPanelOccurred(TransportButtonEvent event) {
+                bottomPanel.removeAll();
+                bottomPanel.add(event.getPanel());
+                bottomPanel.revalidate();
+                bottomPanel.repaint();
+            }
+        });
+
+        transportsPanel.setOrderTransportListener(new OrderTransportListener() {
+            @Override
+            public void orderTransportButtonOccurred(OrderTransportButtonEvent event) {
                 bottomPanel.removeAll();
                 bottomPanel.add(event.getPanel());
                 bottomPanel.revalidate();

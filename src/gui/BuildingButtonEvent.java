@@ -2,7 +2,6 @@ package gui;
 
 import buildings.Building;
 
-import javax.swing.*;
 import java.util.EventObject;
 
 public class BuildingButtonEvent extends EventObject {
