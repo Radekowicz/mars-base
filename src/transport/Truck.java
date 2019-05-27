@@ -26,12 +26,4 @@ public class Truck extends Transport {
     public ConsumablesPack requiredResourcesToStart() {
         return new ConsumablesPack(50,0,0,5,0,0);
     }
-
-    @Override
-    public boolean send(Place target, int distanceToDestiny) {
-        if (super.getTarget() != null || !ResourcesManager.isEnough(requiredResourcesToStart()))
-            return false;
-
-        return super.send(target, distanceToDestiny);
-    }
 }

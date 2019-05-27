@@ -43,11 +43,11 @@ public final class ResourcesManager {
     //jeśli gracz będzie chciał dodać więcej Human niż jest Capacity to zostanie odrzucony a interfejs wypisze ile Max Human może dodać ( howManyPlacesAvailable() )
 
     public static boolean canAdd (UnitsPack uP) {
-        return(BuildingManager.countMaxHumanCapacity() - getHumanStatus() >= uP.getHumans());
+        return(BuildingManager.getMaxHumanCapacity() - getHumanStatus() >= uP.getHumans());
     }
 
     public static long howManyPlacesAvailable() {
-        return BuildingManager.countMaxHumanCapacity() - getHumanStatus();
+        return BuildingManager.getMaxHumanCapacity() - getHumanStatus();
     }
 
     public static void add(UnitsPack uP) {

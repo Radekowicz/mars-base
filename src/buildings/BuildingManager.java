@@ -16,7 +16,7 @@ public final class BuildingManager {
     private static long hubCapacity = 50;
     private static int numberOfPrintStations;
     private static long maxHumanCapacity;
-    private static List<Building> buildings;
+    private static List<Building> buildings = new ArrayList<>();
 
     private BuildingManager(List<Building> buildings) {
         this.buildings = buildings;

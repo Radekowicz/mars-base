@@ -1,7 +1,6 @@
 package gui;
 
 import events.DescriptionPublisher;
-import events.Event;
 import events.EventListener;
 
 import javax.swing.*;
@@ -69,6 +68,7 @@ public class MainFrame extends JFrame implements EventListener {
                 bottomPanel.repaint();
             }
         });
+
 
         topPanel.add(resourcesPanel);
         topPanel.add(buildingsPanel);

@@ -1,6 +1,13 @@
 package resources;
 
+import buildings.Building;
+import buildings.BuildingManager;
+import buildings.Hub;
 import org.junit.jupiter.api.Test;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -8,6 +15,8 @@ class ResourcesManagerTest {
 
     @Test
     void add() {
+        List<Building> buildings = new ArrayList<>(Arrays.asList(new Hub(), new Hub(), new Hub()));
+        BuildingManager.initializeBuildingManager(buildings);
         ResourcesManager.reset(new ConsumablesPack(0,0,0,0,0,0),new UnitsPack(0,0));
         ConsumablesPack zasoby = new ConsumablesPack(100,100,100,100,100,100);
         UnitsPack jednostki = new UnitsPack(100,100);
@@ -37,8 +46,10 @@ class ResourcesManagerTest {
 
     @Test
     void add2() {
+        List<Building> buildings = new ArrayList<>(Arrays.asList(new Hub(), new Hub(), new Hub()));
+        BuildingManager.initializeBuildingManager(buildings);
         ResourcesManager.reset(new ConsumablesPack(0,0,0,0,0,0),new UnitsPack(0,0));
-        UnitsPack jednostki2 = new UnitsPack(1254125,215125);
+        UnitsPack jednostki2 = new UnitsPack(90,110);
         ResourcesManager.add(jednostki2);
         assertEquals(ResourcesManager.getHumanStatus(),jednostki2.getHumans());
         assertEquals(ResourcesManager.getRobotStatus(),jednostki2.getRobots());
@@ -46,6 +57,8 @@ class ResourcesManagerTest {
 
     @Test
     void subtract() {
+        List<Building> buildings = new ArrayList<>(Arrays.asList(new Hub(), new Hub(), new Hub()));
+        BuildingManager.initializeBuildingManager(buildings);
         ResourcesManager.reset(new ConsumablesPack(0,0,0,0,0,0),new UnitsPack(0,0));
         ConsumablesPack zasoby3 = new ConsumablesPack(100,1232,543,98675,231,5445);
         UnitsPack jednostki3  = new UnitsPack(3255,3454);
@@ -87,6 +100,8 @@ class ResourcesManagerTest {
 
     @Test
     void isEnough() {
+        List<Building> buildings = new ArrayList<>(Arrays.asList(new Hub(), new Hub(), new Hub()));
+        BuildingManager.initializeBuildingManager(buildings);
         ResourcesManager.reset(new ConsumablesPack(0,0,0,0,0,0),new UnitsPack(0,0));
         ConsumablesPack zasoby5 = new ConsumablesPack(100,100,100,100,100,100);
         UnitsPack jednostki5 = new UnitsPack(100,100);
@@ -105,9 +120,9 @@ class ResourcesManagerTest {
     @Test
     void isEnough2() {
         ResourcesManager.reset(new ConsumablesPack(0,0,0,0,0,0),new UnitsPack(0,0));
-        UnitsPack jednostki6 = new UnitsPack(100,200);
-        ResourcesManager.add(jednostki6);
-        assertTrue(ResourcesManager.isEnough(jednostki6));
+        UnitsPack unitsPack = new UnitsPack(100,200);
+        ResourcesManager.add(unitsPack);
+        assertTrue(ResourcesManager.isEnough(unitsPack));
     }
 
     @Test
@@ -166,11 +181,13 @@ class ResourcesManagerTest {
 
     @Test
     void getHumanStatus() {
+        List<Building> buildings = new ArrayList<>(Arrays.asList(new Hub(), new Hub(), new Hub()));
+        BuildingManager.initializeBuildingManager(buildings);
         ResourcesManager.reset(new ConsumablesPack(0,0,0,0,0,0),new UnitsPack(0,0));
         ConsumablesPack zasoby13 = new ConsumablesPack(100,2378,1902,100,3300,100);
-        UnitsPack jednostki13 = new UnitsPack(9023,100);
+        UnitsPack jednostki13 = new UnitsPack(100,200);
         ResourcesManager.add(zasoby13,jednostki13);
-        assertEquals(ResourcesManager.getHumanStatus(),9023);
+        assertEquals(ResourcesManager.getHumanStatus(),100);
     }
 
     @Test

@@ -35,7 +35,7 @@ public class ResourcesPanel extends JPanel {
         marsMaterialArea = new JLabel("" + ResourcesManager.getMarsMaterialStatus());
         earthMaterialArea = new JLabel("" + ResourcesManager.getEarthMaterialStatus());
         humanArea = new JLabel("" + ResourcesManager.getHumanStatus());
-        maxCapacityHumanArea = new JLabel("of " + BuildingManager.countMaxHumanCapacity());
+        maxCapacityHumanArea = new JLabel("\\ " + BuildingManager.getMaxHumanCapacity());
         robotArea = new JLabel("" + ResourcesManager.getRobotStatus());
 
         add(new JLabel("Resources: "));
@@ -77,7 +77,7 @@ public class ResourcesPanel extends JPanel {
         marsMaterialArea.setText("" + ResourcesManager.getMarsMaterialStatus());
         earthMaterialArea.setText("" + ResourcesManager.getEarthMaterialStatus());
         humanArea.setText("" + ResourcesManager.getHumanStatus());
-        maxCapacityHumanArea = new JLabel("of " + BuildingManager.countMaxHumanCapacity());
+        maxCapacityHumanArea.setText("\\ " + BuildingManager.getMaxHumanCapacity());
         robotArea.setText("" + ResourcesManager.getRobotStatus());
     }
 }

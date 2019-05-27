@@ -9,17 +9,28 @@ public final class UnitsPack {
         this.robots = robots;
     }
 
-    public long getHumans() { return humans; }
-    public void setHumans(long humans) { this.humans = humans; }
+    public long getHumans() {
+        return humans; }
 
-    public long getRobots() { return robots; }
-    public void setRobots(long robots) { this.robots = robots; }
+    public long getRobots() {
+        return robots; }
 
-    public void addHumans(long h) { this.humans += h;}
-    public void addRobots(long r) {this.robots += r; }
+    public void addHumans(long h) {
+        this.humans += h;
 
-    public void subtractHumans(long h) { this.humans -= h;}
-    public void subtractRobots(long r) {this.robots -= r; }
+    }
+
+    public void addRobots(long r) {
+        this.robots += r;
+    }
+
+    public void subtractHumans(long h) {
+        this.humans -= h;
+    }
+
+    public void subtractRobots(long r) {
+        this.robots -= r;
+    }
 
     public boolean isEnough(UnitsPack uP){
         return this.humans >= uP.getHumans() && this.robots >= uP.robots;

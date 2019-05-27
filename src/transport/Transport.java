@@ -39,9 +39,9 @@ public abstract class Transport implements Destructible, Fixable, DescriptionPub
         this.currentCP = new ConsumablesPack(0,0,0,0,0,0);
         this.currentUP = new UnitsPack(0,0);
         this.possibleTargets = possibleTargets;
-        this.transportStatus = TransportStatus.WAITING;
+        this.transportStatus = TransportStatus.ORDERED;
         this.orderedSpeed = 490000;
-        this.currentPlace = Place.BASE;
+        this.currentPlace = Place.SPACE;
         this.target = Place.BASE;
         this.distanceToDestiny = TransportManager.determineDistance(Place.EARTH);
         returning = true;
@@ -66,7 +66,6 @@ public abstract class Transport implements Destructible, Fixable, DescriptionPub
     }
 
     public void move() {
-        System.out.println("XD");
         if ((distanceToDestiny - speed) <= 0) {
             distanceToDestiny = 0;
             currentPlace = target;
@@ -118,6 +117,7 @@ public abstract class Transport implements Destructible, Fixable, DescriptionPub
     }
 
     public void unload(EventListener eventListener) {
+        System.out.println("DUPA8 " + currentCP.toString());
         eventListener.eventOccurred(this);
         ResourcesManager.add(currentCP, currentUP);
         this.currentCP.zeroing();
@@ -176,8 +176,6 @@ public abstract class Transport implements Destructible, Fixable, DescriptionPub
     }
 
     public String getTransportStatusAsString() {
-        String status = "";
-
         switch (transportStatus) {
             case WAITING:
                 return "waiting";
@@ -188,11 +186,11 @@ public abstract class Transport implements Destructible, Fixable, DescriptionPub
             case UNLOADED:
                 return "unloading";
             case ON_THE_WAY:
-                status = "on the way";
+                return "on the way";
             case ORDERED:
-                status = "ordered";
+                return "ordered";
             default:
-                return status;
+                return "unknown transport status";
         }
     }
 
@@ -225,6 +223,12 @@ public abstract class Transport implements Destructible, Fixable, DescriptionPub
         }
 
         return targets;
+    }
+
+    void setInBase() {
+        this.currentPlace = Place.BASE;
+        this.distanceToDestiny = 0;
+        this.transportStatus = TransportStatus.WAITING;
     }
 
     public abstract ConsumablesPack costOfFix();

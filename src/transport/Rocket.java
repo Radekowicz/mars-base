@@ -15,7 +15,7 @@ public abstract class Rocket extends Transport {
 
     @Override
     public boolean send(Place target, int distanceToDestiny) {
-        if (super.getTarget() != null || !ResourcesManager.isEnough(requiredResourcesToStart()) || super.getCurrentPlace() == target)
+        if (!ResourcesManager.isEnough(requiredResourcesToStart()) || target == Place.BASE)
             return false;
 
         return super.send(target, distanceToDestiny);

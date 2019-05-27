@@ -51,6 +51,9 @@ public class OrderTransportPanel extends JPanel {
 
                 resultInfoPanel.removeAll();
                 String info = result ? "New transport is one the way." : "You cannot order transport, not enough time has passed from last order";
+
+//                if ()
+
                 resultInfoPanel.add(new JLabel(info));
                 resultInfoPanel.validate();
                 resultInfoPanel.repaint();

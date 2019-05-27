@@ -13,6 +13,9 @@ public class AddBuildingPanel extends JPanel {
     private JComboBox buildingsComboBox;
     private JButton buildButton;
     private JPanel resultInfoPanel;
+    Building newBuilding;
+    boolean lastResult;
+    NewItemListener newItemListener;
 
     public AddBuildingPanel() {
         setPreferredSize(new Dimension(WIDTH, HEIGHT));
@@ -37,32 +40,39 @@ public class AddBuildingPanel extends JPanel {
         buildButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                boolean result = false;
 
                 switch (buildingsComboBox.getSelectedIndex()) {
                     case 0:
-                        result = BuildingManager.addBuilding(new Hub());
+                        newBuilding = new Hub();
+                        lastResult = BuildingManager.addBuilding(newBuilding);
                         break;
                     case 1:
-                        result = BuildingManager.addBuilding(new ColdFusionPowerPlant());
+                        newBuilding = new ColdFusionPowerPlant();
+                        lastResult = BuildingManager.addBuilding(newBuilding);
                         break;
                     case 2:
-                        result = BuildingManager.addBuilding(new Greenhouse());
+                        newBuilding = new Greenhouse();
+                        lastResult = BuildingManager.addBuilding(newBuilding);
                         break;
                     case 3:
-                        result = BuildingManager.addBuilding(new OpenPitMine());
+                        newBuilding = new OpenPitMine();
+                        lastResult = BuildingManager.addBuilding(newBuilding);
                         break;
                     case 4:
-                        result = BuildingManager.addBuilding(new OxygenGenerator());
+                        newBuilding = new OxygenGenerator();
+                        lastResult = BuildingManager.addBuilding(newBuilding);
                         break;
                     case 5:
-                        result = BuildingManager.addBuilding(new PrintStation());
+                        newBuilding = new PrintStation();
+                        lastResult = BuildingManager.addBuilding(newBuilding);
                         break;
                     case 6:
-                        result = BuildingManager.addBuilding(new RobotStation());
+                        newBuilding = new RobotStation();
+                        lastResult = BuildingManager.addBuilding(newBuilding);
                         break;
                     case 7:
-                        result = BuildingManager.addBuilding(new SolarPanel());
+                        newBuilding = new SolarPanel();
+                        lastResult = BuildingManager.addBuilding(newBuilding);
                         break;
                     default:
                         break;
@@ -70,11 +80,21 @@ public class AddBuildingPanel extends JPanel {
 
 
                 resultInfoPanel.removeAll();
-                String info = result ? "Building have been added." : "You cannot build this building, no enough resources";
+                String info;
+                if (lastResult) {
+                    info = "Building have been added.";
+                    System.out.println("NIL: " + newItemListener);
+                    System.out.println("NB: " + newBuilding.getName());
+                    newItemListener.newItemAdded(newBuilding);
+                    lastResult = false;
+                }
+                else {
+                    info = "You cannot build this building, no enough resources";
+                }
+
                 resultInfoPanel.add(new JLabel(info));
                 resultInfoPanel.validate();
                 resultInfoPanel.repaint();
-
             }
         });
 
@@ -82,5 +102,9 @@ public class AddBuildingPanel extends JPanel {
 
         resultInfoPanel = new JPanel();
         add(resultInfoPanel);
+    }
+
+    public void setNewItemListener(NewItemListener newItemListener) {
+        this.newItemListener = newItemListener;
     }
 }

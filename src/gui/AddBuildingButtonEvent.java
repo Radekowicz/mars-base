@@ -1,13 +1,27 @@
 package gui;
 
+
 import java.util.EventObject;
 
 public class AddBuildingButtonEvent extends EventObject {
+    NewItemListener newItemListener;
+
     public AddBuildingButtonEvent(Object source) {
         super(source);
     }
 
-     public AddBuildingPanel getPanel() {
-        return new AddBuildingPanel();
+    public AddBuildingButtonEvent(Object source, NewItemListener newItemListener) {
+        super(source);
+        this.newItemListener = newItemListener;
+    }
+
+    public AddBuildingPanel getPanel() {
+         AddBuildingPanel addBuildingPanel = new AddBuildingPanel();
+         addBuildingPanel.setNewItemListener(newItemListener);
+         return addBuildingPanel;
      }
+
+    public void setNewItemListener(NewItemListener newItemListener) {
+        this.newItemListener = newItemListener;
+    }
 }

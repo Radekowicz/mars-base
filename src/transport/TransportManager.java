@@ -30,6 +30,10 @@ public final class TransportManager {
     public static void initializeResourcesManager(List<Transport> ts, int transportOrderBreak){
         if(transportManager == null)
             transportManager = new TransportManager(ts, transportOrderBreak);
+
+        for (Transport transport : transports) {
+            transport.setInBase();
+        }
     }
 
     public static void update() {
