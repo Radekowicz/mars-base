@@ -13,8 +13,9 @@ import java.util.List;
  */
 public final class BuildingManager {
     private static BuildingManager buildingManager = null;
-    private static long maximalCapacityOfHub = 50;
+    private static long hubCapacity = 50;
     private static int numberOfPrintStations;
+    private static long maxHumanCapacity;
     private static List<Building> buildings;
 
     private BuildingManager(List<Building> buildings) {
@@ -25,7 +26,16 @@ public final class BuildingManager {
     public static void initializeBuildingManager(List<Building> buildings) {
         if (buildingManager == null)
             buildingManager = new BuildingManager(buildings);
-        numberOfPrintStations = howManyPrintStations();
+        numberOfPrintStations = countPrintStations();
+        maxHumanCapacity = countMaxHumanCapacity();
+    }
+
+    public static int getNumberOfPrintStations() {
+        return numberOfPrintStations;
+    }
+
+    public static long getMaxHumanCapacity() {
+        return maxHumanCapacity;
     }
 
     public static boolean canBuild(Building building) {
@@ -40,23 +50,40 @@ public final class BuildingManager {
         List<Building> buildingsToRemove = new ArrayList<>();
 
         for (Building building : buildings) {
-            if (building.getBuildingStatus() == BuildingStatus.IN_BUILD) {
-                building.decreaseCounter();
-                if (building.isReady()) {
-                    building.setBuildingStatus(BuildingStatus.WORKING);
-                    numberOfPrintStations++;
-                }
-            }
-        }
-
-        for (Building building : buildings) {
             if (building.getBuildingStatus() == BuildingStatus.WORKING) {
                 if(ResourcesManager.subtract(building.consumeResources())) {
                     ResourcesManager.add(building.generateResources());
                 }
             }
+            else if (building.getBuildingStatus() == BuildingStatus.IN_BUILD) {
+                building.decreaseCounter();
+                if (building.isReady()) {
+                    building.setBuildingStatus(BuildingStatus.WORKING);
+                    numberOfPrintStations++;
+                    if (building instanceof Hub) {
+                        maxHumanCapacity += hubCapacity;
+                    }
+                    if (building instanceof PrintStation) {
+                        numberOfPrintStations++;
+                    }
+                }
+            }
             else if (building.getBuildingStatus() == BuildingStatus.DESTROYED) {
                 buildingsToRemove.add(building);
+                if (building instanceof Hub) {
+                    maxHumanCapacity -= hubCapacity;
+                }
+                if (building instanceof PrintStation) {
+                    numberOfPrintStations--;
+                }
+            }
+            else if (building.getBuildingStatus() == BuildingStatus.DAMAGED) {
+                if (building instanceof Hub) {
+                    maxHumanCapacity -= hubCapacity;
+                }
+                if (building instanceof PrintStation) {
+                    numberOfPrintStations--;
+                }
             }
         }
 
@@ -77,24 +104,25 @@ public final class BuildingManager {
         return false;
     }
 
-    public static long getMaxHumanCapacity () {
+    public static long countMaxHumanCapacity () {
         int amount = 0;
         for (Building building : buildings) {
-            if (building instanceof Hub) amount++;
+            if (building instanceof Hub)
+                amount += hubCapacity;
         }
-        return amount * maximalCapacityOfHub;
+        return amount;
     }
 
     public static List<Building> getBuildings() {
         return buildings;
     }
 
-    public static int howManyPrintStations() {
+    public static int countPrintStations() {
         int amount = 0;
         for (Building building : buildings) {
             if(building instanceof PrintStation) amount++;
         }
-        return  amount;
+        return amount;
     }
 
 
