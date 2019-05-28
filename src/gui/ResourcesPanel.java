@@ -28,14 +28,14 @@ public class ResourcesPanel extends JPanel {
         setPreferredSize(new Dimension(WIDTH, HEIGHT));
         setBorder(BorderFactory.createLineBorder(Color.BLACK,2));
 
-        energyArea = new JLabel("" + ResourcesManager.getEnergyStatus());
-        waterArea = new JLabel ("" + ResourcesManager.getWaterStatus());
-        oxygenArea = new JLabel("" + ResourcesManager.getOxygenStatus());
+        energyArea = new JLabel("| " + ResourcesManager.getEnergyStatus() + " |");
+        waterArea = new JLabel ("" + ResourcesManager.getWaterStatus() + " |");
+        oxygenArea = new JLabel("" + ResourcesManager.getOxygenStatus() + " |");
         foodArea = new JLabel("" + ResourcesManager.getFoodStatus());
-        marsMaterialArea = new JLabel("" + ResourcesManager.getMarsMaterialStatus());
-        earthMaterialArea = new JLabel("" + ResourcesManager.getEarthMaterialStatus());
+        marsMaterialArea = new JLabel("" + ResourcesManager.getMarsMaterialStatus() + " |");
+        earthMaterialArea = new JLabel("" + ResourcesManager.getEarthMaterialStatus() + " |");
         humanArea = new JLabel("" + ResourcesManager.getHumanStatus());
-        maxCapacityHumanArea = new JLabel("\\ " + BuildingManager.getMaxHumanCapacity());
+        maxCapacityHumanArea = new JLabel("\\ " + BuildingManager.getMaxHumanCapacity() + " |");
         robotArea = new JLabel("" + ResourcesManager.getRobotStatus());
 
         add(new JLabel("Resources: "));
@@ -70,14 +70,14 @@ public class ResourcesPanel extends JPanel {
     }
 
     private void updateResourcesPanel() {
-        energyArea.setText("" + ResourcesManager.getEnergyStatus());
-        waterArea.setText("" + ResourcesManager.getWaterStatus());
-        oxygenArea.setText("" + ResourcesManager.getOxygenStatus());
-        foodArea.setText("" + ResourcesManager.getFoodStatus());
-        marsMaterialArea.setText("" + ResourcesManager.getMarsMaterialStatus());
-        earthMaterialArea.setText("" + ResourcesManager.getEarthMaterialStatus());
+        energyArea.setText("" + ResourcesManager.getEnergyStatus() + " |");
+        waterArea.setText("" + ResourcesManager.getWaterStatus()+ " |");
+        oxygenArea.setText("" + ResourcesManager.getOxygenStatus() + " |");
+        foodArea.setText("" + ResourcesManager.getFoodStatus() + " |");
+        marsMaterialArea.setText("" + ResourcesManager.getMarsMaterialStatus() + " |");
+        earthMaterialArea.setText("" + ResourcesManager.getEarthMaterialStatus() + " |");
         humanArea.setText("" + ResourcesManager.getHumanStatus());
-        maxCapacityHumanArea.setText("\\ " + BuildingManager.getMaxHumanCapacity());
+        maxCapacityHumanArea.setText("\\ " + BuildingManager.getMaxHumanCapacity() + " |");
         robotArea.setText("" + ResourcesManager.getRobotStatus());
     }
 }

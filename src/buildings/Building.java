@@ -188,6 +188,8 @@ public abstract class Building implements Comparable<Building>, Destructible, Fi
 
     public int getCounter() {
         return counter;
+    }
+
     public boolean isChecked() {
         return checked;
     }

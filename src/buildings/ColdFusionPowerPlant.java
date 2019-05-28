@@ -27,7 +27,7 @@ public class ColdFusionPowerPlant extends Building {
 
     @Override
     public UnitsPack costOfBuildingInUnits() {
-        return new UnitsPack(5, 20);
+        return new UnitsPack(0, 20);
     }
 
     @Override
