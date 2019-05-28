@@ -23,6 +23,10 @@ public final class BuildingManager {
         Collections.sort(buildings);
     }
 
+    /**
+     *sets starting values
+     * @param buildings is a list of buildings
+     */
     public static void initializeBuildingManager(List<Building> buildings) {
         if (buildingManager == null)
             buildingManager = new BuildingManager(buildings);
@@ -51,8 +55,11 @@ public final class BuildingManager {
 
         for (Building building : buildings) {
             if (building.getBuildingStatus() == BuildingStatus.WORKING) {
-                if(ResourcesManager.subtract(building.consumeResources())) {
+                if (ResourcesManager.subtract(building.consumeResources())) {
                     ResourcesManager.add(building.generateResources());
+                }
+                if (building instanceof RobotStation) {
+                    ResourcesManager.add(new UnitsPack(0, 1));
                 }
             }
             else if (building.getBuildingStatus() == BuildingStatus.IN_BUILD) {
@@ -68,7 +75,7 @@ public final class BuildingManager {
                     }
                 }
             }
-            else if (building.getBuildingStatus() == BuildingStatus.DESTROYED) {
+            else if (building.getBuildingStatus() == BuildingStatus.DESTROYED & !building.isChecked()) {
                 buildingsToRemove.add(building);
                 if (building instanceof Hub) {
                     maxHumanCapacity -= hubCapacity;
@@ -76,15 +83,17 @@ public final class BuildingManager {
                 }
                 if (building instanceof PrintStation) {
                     numberOfPrintStations--;
+                    building.setChecked(true);
                 }
             }
-            else if (building.getBuildingStatus() == BuildingStatus.DAMAGED) {
+            else if (building.getBuildingStatus() == BuildingStatus.DAMAGED & !building.isChecked()) {
                 if (building instanceof Hub) {
                     maxHumanCapacity -= hubCapacity;
                     building.setChecked(true);
                 }
                 if (building instanceof PrintStation) {
                     numberOfPrintStations--;
+                    building.setChecked(true);
                 }
             }
         }

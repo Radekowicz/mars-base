@@ -26,7 +26,7 @@ public class Greenhouse extends Building {
 
     @Override
     public UnitsPack costOfBuildingInUnits() {
-        return new UnitsPack(4, 10);
+        return new UnitsPack(0, 10);
     }
 
     @Override
