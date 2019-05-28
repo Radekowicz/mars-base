@@ -170,12 +170,16 @@ public abstract class Transport implements Destructible, Fixable, DescriptionPub
         return target;
     }
 
+    /**
+     * Returns transport's current place
+     * @return currentPlace
+     */
     public Place getCurrentPlace() {
         return currentPlace;
     }
 
     /**
-     * Check that target is in possibleTargets
+     * Checks that target is in possibleTargets
      * @param target - place where the transport would be sent
      * @return true if target is possible, otherwise false
      */
@@ -185,7 +189,7 @@ public abstract class Transport implements Destructible, Fixable, DescriptionPub
 
     /**
      * Implements of Destructible interface and carries out the damage process
-     * Possible effects are: nothing if drawn number is 0, damaged if number if in range (0, 100) and destroyed if number is 100
+     * Possible effects are: nothing if drawn number is 0, damaged if number is in range (0, 100) and destroyed if number is 100
      */
     @Override
     public void damage() {
@@ -206,7 +210,7 @@ public abstract class Transport implements Destructible, Fixable, DescriptionPub
     }
 
     /**
-     *
+     * If there is enough resources to fix transport, it is fix
      * @return true if transport have been fixed, otherwise false
      */
     @Override
@@ -223,46 +227,59 @@ public abstract class Transport implements Destructible, Fixable, DescriptionPub
         return false;
     }
 
+    /**
+     * Returns transport's status as string
+     * @return transport's status as string
+     */
     public String getTransportStatusAsString() {
-        switch (transportStatus) {
-            case WAITING:
-                return "waiting";
-            case DAMAGED:
-                return "damaged";
-            case LOADED:
-                return "loading";
-            case UNLOADED:
-                return "unloading";
-            case ON_THE_WAY:
-                return "on the way";
-            case ORDERED:
-                return "ordered";
-            default:
-                return "unknown transport status";
-        }
+        return TransportStatus.transportStatusAsString(transportStatus);
     }
 
+    /**
+     * Returns transport's status
+     * @return transport's status
+     */
     public TransportStatus getTransportStatus() {
         return transportStatus;
     }
 
+    /**
+     * Returns distance to destiny
+     * @return distanceToDestiny
+     */
     public int getDistanceToDestiny() {
         return distanceToDestiny;
     }
 
+    /**
+     * Return possible targets of transport as List
+     * @return possibleTatgets
+     */
     public List<Place> getPossibleTargets() {
         return possibleTargets;
     }
 
+    /**
+     * Implements DescriptionPublisher's method, crate a short message
+     * @return short message as String
+     */
     @Override
     public String getDescribed() {
         return name + " came back! It brought with itself " + currentCP.toString() + " and " + currentUP.toString();
     }
 
+    /**
+     * Return returning status
+     * @return true if transport is returning, otherwise false
+     */
     public boolean isReturning() {
         return returning;
     }
 
+    /**
+     * Creates new List of Srtrings with possible targets as String
+     * @return possibleTargets as List of Strings
+     */
     public ArrayList<String> getPossibleTargetsAsStringList() {
         ArrayList<String> targets = new ArrayList<>();
 
@@ -273,12 +290,24 @@ public abstract class Transport implements Destructible, Fixable, DescriptionPub
         return targets;
     }
 
+    /**
+     * Method use by TransportManager during initialize. Set transport in base with transport status as waiting
+     */
     void setInBase() {
         this.currentPlace = Place.BASE;
         this.distanceToDestiny = 0;
         this.transportStatus = TransportStatus.WAITING;
     }
 
+    /**
+     * Informs how much consumables resources is required to fix transport
+     * @return Consumables resources
+     */
     public abstract ConsumablesPack costOfFix();
+
+    /**
+     * Declares how much consumables resources is required to start
+     * @return
+     */
     public abstract ConsumablesPack requiredResourcesToStart();
 }

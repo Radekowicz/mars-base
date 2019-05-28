@@ -4,29 +4,46 @@ import events.EventListener;
 import resources.ConsumablesPack;
 import resources.UnitsPack;
 
-import java.lang.annotation.Target;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+/**
+ * Class managing transport,
+ */
 public final class TransportManager {
     private static TransportManager transportManager = null;
 
     private static List<Transport> transports;
     private static int transportOrderBreak;
-    private static int currentTransportOrerBreak;
+    private static int currentTransportOrderBreak;
     private static EventListener eventListener;
 
+    /**
+     * Sets eventListener
+     * @param eventListener EventListener
+     */
     public static void setEventListener(EventListener eventListener) {
         TransportManager.eventListener = eventListener;
     }
 
+    /**
+     * Sets List of Transport and transportBreakOrder from parms, and sets currentTransportOrderBreak from transportBreakOrder
+     * TransportOrderBreak is constant value and first order break equals to that value
+     * @param ts List of Transport
+     * @param tOB time order break
+     */
     private TransportManager(List<Transport> ts, int tOB) {
         transports = ts;
         transportOrderBreak = tOB;
-        currentTransportOrerBreak = transportOrderBreak;
+        currentTransportOrderBreak = transportOrderBreak;
     }
 
+    /**
+     * Initializes ResourcesManager (which cannot have class's instance), and sets all means of transport in base
+     * @param ts List of Transport
+     * @param transportOrderBreak timeOrderBreak
+     */
     public static void initializeResourcesManager(List<Transport> ts, int transportOrderBreak){
         if(transportManager == null)
             transportManager = new TransportManager(ts, transportOrderBreak);
@@ -36,6 +53,9 @@ public final class TransportManager {
         }
     }
 
+    /**
+     * Updates all means of transport in list depending on its status, if transport have status loaded is load, unloaded - unload, on_the_way - move, destroyed - add to new list (destroyedTransport). Transport in that list will be remove. At the end decreases currentTransportOrderBreak.
+     */
     public static void update() {
         List<Transport> destroyedTransport = new ArrayList<>();
 
@@ -61,10 +81,16 @@ public final class TransportManager {
 
         destroyedTransport.clear();
 
-        if (currentTransportOrerBreak != 0)
-            --currentTransportOrerBreak;
+        if (currentTransportOrderBreak != 0)
+            --currentTransportOrderBreak;
     }
 
+    /**
+     * Checks that transport is in base, if is, use send() method on transport and returns value from that method
+     * @param transport transport from list
+     * @param target target
+     * @return true if transport have been sent, other wise false
+     */
     public static boolean send(Transport transport, Place target) {
         if (transport.getTransportStatus() != TransportStatus.WAITING)
             return false;
@@ -72,10 +98,21 @@ public final class TransportManager {
         return transport.send(target, determineDistance(target));
     }
 
+    /**
+     * Compares currentTransportOrderBreak to zero and return value
+     * @return true if order is possible, otherwise false
+     */
     private static boolean orderIsPossible() {
-        return currentTransportOrerBreak == 0;
+        return currentTransportOrderBreak == 0;
     }
 
+    /**
+     * Check that is order possible. If is, compare transport instance to
+     * @param transport class name name of the transport class
+     * @return true if the order has been processed, otherwise false
+     * @deprecated Now in use is {@link TransportManager#orderTransport(Transport)}
+     *  }
+     */
     public static boolean orderTransport(String transport) {
         if (!orderIsPossible())
             return false;
@@ -102,6 +139,12 @@ public final class TransportManager {
         return ordered;
     }
 
+
+    /**
+     * Checks that order is possible, if is add transport to list of means of transport
+     * @param transport transport
+     * @return true if transport have been added (ordered) to list, otherwise false
+     */
     public static boolean orderTransport(Transport transport) {
         if (!orderIsPossible())
             return false;
@@ -111,10 +154,19 @@ public final class TransportManager {
         return true;
     }
 
+    /**
+     * Returns reference to list of transport
+     * @return {@link TransportManager#transports}
+     */
     public static List<Transport> getTransports() {
         return transports;
     }
 
+    /**
+     * Generate consumables resources in depends of place.
+     * @param place place where resources are generate
+     * @return drawn ConsumablesPack
+     */
     public static ConsumablesPack generateResources(Place place) {
         Random random = new Random();
 
@@ -147,6 +199,11 @@ public final class TransportManager {
         return new ConsumablesPack(0,0,0,0,0,0);
     }
 
+    /**
+     * Generate consumables resources in depends of place
+     * @param place place where resources are generate
+     * @return drawn UnitsPack
+     */
     public static UnitsPack generateUnits(Place place) {
         if (place != Place.EARTH)
             return new UnitsPack(0,0);
@@ -155,6 +212,11 @@ public final class TransportManager {
         return new UnitsPack(random. nextInt(11) + 5,0);
     }
 
+    /**
+     * Generate value of distance between Base and other place
+     * @param place place where resources are generate
+     * @return drawn UnitsPack
+     */
     public static int determineDistance(Place place) {
         Random random = new Random();
         int distance;

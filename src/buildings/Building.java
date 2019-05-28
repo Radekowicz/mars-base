@@ -110,4 +110,8 @@ public abstract class Building implements Comparable<Building>, Destructible, Fi
 
         return false;
     }
+
+    public int getCounter() {
+        return counter;
+    }
 }

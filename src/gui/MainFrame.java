@@ -17,6 +17,9 @@ public class MainFrame extends JFrame implements EventListener {
     private JPanel topPanel;
     private JPanel bottomPanel;
 
+    /**
+     * Creates main frame which consist of {@link MainFrame#resourcesPanel},{@link MainFrame#buildingsPanel}, {@link MainFrame#transportsPanel}, {@link MainFrame#eventPanel} and {@link MainFrame#bottomPanel}
+     */
     public MainFrame() {
         super("Mars base simulator");
         setPreferredSize(new Dimension(WIDTH, HEIGHT));
@@ -86,6 +89,10 @@ public class MainFrame extends JFrame implements EventListener {
         setVisible(true);
     }
 
+    /**
+     * Uses by classes implements {@link DescriptionPublisher}. When event is occurred {@link MainFrame#eventPanel} shows up
+     * @param descriptionPublisher object which may occurred event
+     */
     @Override
     public void eventOccurred(DescriptionPublisher descriptionPublisher) {
         eventPanel.setInformation(descriptionPublisher.getDescribed());

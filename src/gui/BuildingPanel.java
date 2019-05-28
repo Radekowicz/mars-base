@@ -26,6 +26,18 @@ public class BuildingPanel extends JPanel {
         infoPanel.add(new JLabel(building.getName()));
         infoPanel.add(new JLabel("Building status:"));
         infoPanel.add(new JLabel(building.getBuildingStatusAsString()));
+        if (building.getBuildingStatus() == BuildingStatus.IN_BUILD) {
+            JLabel counterLabel = new JLabel("Time left until build: " + building.getCounter());
+
+            Timer timer = new Timer(1000, new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+
+                }
+            });
+
+            infoPanel.add(new JLabel("Time left until build: " + building.getCounter()));
+        }
 
         Border innerBorderForInfo = BorderFactory.createTitledBorder("Information");
         Border outerBorderForInfo = BorderFactory.createEmptyBorder(5, 5, 5, 5);
