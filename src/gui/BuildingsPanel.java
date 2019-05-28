@@ -84,8 +84,6 @@ public class BuildingsPanel extends JPanel  {
             }
         });
         buildingsPanel.add(buildingButton);
-        buildingsPanel.validate();
-        buildingsPanel.repaint();
     }
 
     public void setBuildingsPanelListener(BuildingsPanelListener buildingPanelListener) {

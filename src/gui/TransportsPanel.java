@@ -18,11 +18,13 @@ public class TransportsPanel extends JPanel {
     private JButton orderTransportButton;
     private TransportsPanelListener transportsPanelListener;
     private OrderTransportListener orderTransportListener;
+    private JPanel transportContener;
 
     public TransportsPanel() {
         setPreferredSize(new Dimension(WIDTH, HEIGHT));
         setBorder(BorderFactory.createLineBorder(Color.BLACK,2));
         transportsButtons = new ArrayList<>();
+        transportContener = new JPanel();
 
         for (Transport transport: TransportManager.getTransports()) {
             TransportButton transportButton = new TransportButton(transport);
@@ -37,14 +39,22 @@ public class TransportsPanel extends JPanel {
                     }
                 }
             });
-            add(transportButton);
+            transportContener.add(transportButton);
         }
+
+        add(transportContener);
 
         orderTransportButton = new JButton("Order transport");
         orderTransportButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent event) {
-                OrderTransportButtonEvent orderTransportButtonEvent = new OrderTransportButtonEvent(event);
+                OrderTransportButtonEvent orderTransportButtonEvent = new OrderTransportButtonEvent(event, new NewItemListener() {
+                    @Override
+                    public void newItemAdded(Object item) {
+                        if (item != null)
+                            refresh((Transport) item);
+                    }
+                });
 
                 if (orderTransportButtonEvent != null) {
                     orderTransportListener.orderTransportButtonOccurred(orderTransportButtonEvent);
@@ -61,5 +71,23 @@ public class TransportsPanel extends JPanel {
 
     public void setOrderTransportListener(OrderTransportListener orderTransportListener) {
         this.orderTransportListener = orderTransportListener;
+    }
+
+    void refresh(Transport transport) {
+        if (transport == null)
+            return;
+
+        TransportButton transportButton = new TransportButton(transport);
+        transportButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent event) {
+                TransportButtonEvent transportButtonEvent = new TransportButtonEvent(event, transportButton.getTransport());
+
+                if (transportButtonEvent != null) {
+                    transportsPanelListener.TransportPanelOccurred(transportButtonEvent);
+                }
+            }
+        });
+        transportContener.add(transportButton);
     }
 }

@@ -102,6 +102,15 @@ public final class TransportManager {
         return ordered;
     }
 
+    public static boolean orderTransport(Transport transport) {
+        if (!orderIsPossible())
+            return false;
+
+        transports.add(transport);
+
+        return true;
+    }
+
     public static List<Transport> getTransports() {
         return transports;
     }

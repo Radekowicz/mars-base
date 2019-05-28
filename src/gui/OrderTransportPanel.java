@@ -1,6 +1,6 @@
 package gui;
 
-import transport.TransportManager;
+import transport.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -13,6 +13,8 @@ public class OrderTransportPanel extends JPanel {
     private JComboBox transportsComboBox;
     private JButton orderButton;
     private JPanel resultInfoPanel;
+    private NewItemListener newItemListener;
+    Transport transport;
 
     public OrderTransportPanel() {
         setPreferredSize(new Dimension(WIDTH, HEIGHT));
@@ -36,13 +38,16 @@ public class OrderTransportPanel extends JPanel {
 
                 switch (transportsComboBox.getSelectedIndex()) {
                     case 0:
-                        result = TransportManager.orderTransport("Truck");
+                        transport = new Truck();
+                        result = TransportManager.orderTransport(transport);
                         break;
                     case 1:
-                        result = TransportManager.orderTransport("SwiftRocket");
+                        transport = new SwiftRocket();
+                        result = TransportManager.orderTransport(transport);
                         break;
                     case 2:
-                        result = TransportManager.orderTransport("BFRocket");
+                        transport = new BFRocket();
+                        result = TransportManager.orderTransport(transport);
                         break;
                     default:
                         break;
@@ -50,14 +55,19 @@ public class OrderTransportPanel extends JPanel {
 
 
                 resultInfoPanel.removeAll();
-                String info = result ? "New transport is one the way." : "You cannot order transport, not enough time has passed from last order";
+                String info;
 
-//                if ()
+                if (result) {
+                    info = "New transport is one the way";
+                    newItemListener.newItemAdded(transport);
+                }
+                else {
+                    info = "You cannot order transport, not enough time has passed from last order";
+                }
 
                 resultInfoPanel.add(new JLabel(info));
                 resultInfoPanel.validate();
                 resultInfoPanel.repaint();
-
             }
         });
 
@@ -65,5 +75,9 @@ public class OrderTransportPanel extends JPanel {
 
         resultInfoPanel = new JPanel();
         add(resultInfoPanel);
+    }
+
+    public void setNewItemListener(NewItemListener newItemListener) {
+        this.newItemListener = newItemListener;
     }
 }

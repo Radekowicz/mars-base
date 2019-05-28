@@ -14,7 +14,6 @@ public class AddBuildingPanel extends JPanel {
     private JButton buildButton;
     private JPanel resultInfoPanel;
     Building newBuilding;
-    boolean lastResult;
     NewItemListener newItemListener;
 
     public AddBuildingPanel() {
@@ -40,39 +39,40 @@ public class AddBuildingPanel extends JPanel {
         buildButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                boolean result = false;
 
                 switch (buildingsComboBox.getSelectedIndex()) {
                     case 0:
                         newBuilding = new Hub();
-                        lastResult = BuildingManager.addBuilding(newBuilding);
+                        result = BuildingManager.addBuilding(newBuilding);
                         break;
                     case 1:
                         newBuilding = new ColdFusionPowerPlant();
-                        lastResult = BuildingManager.addBuilding(newBuilding);
+                        result = BuildingManager.addBuilding(newBuilding);
                         break;
                     case 2:
                         newBuilding = new Greenhouse();
-                        lastResult = BuildingManager.addBuilding(newBuilding);
+                        result = BuildingManager.addBuilding(newBuilding);
                         break;
                     case 3:
                         newBuilding = new OpenPitMine();
-                        lastResult = BuildingManager.addBuilding(newBuilding);
+                        result = BuildingManager.addBuilding(newBuilding);
                         break;
                     case 4:
                         newBuilding = new OxygenGenerator();
-                        lastResult = BuildingManager.addBuilding(newBuilding);
+                        result = BuildingManager.addBuilding(newBuilding);
                         break;
                     case 5:
                         newBuilding = new PrintStation();
-                        lastResult = BuildingManager.addBuilding(newBuilding);
+                        result = BuildingManager.addBuilding(newBuilding);
                         break;
                     case 6:
                         newBuilding = new RobotStation();
-                        lastResult = BuildingManager.addBuilding(newBuilding);
+                        result = BuildingManager.addBuilding(newBuilding);
                         break;
                     case 7:
                         newBuilding = new SolarPanel();
-                        lastResult = BuildingManager.addBuilding(newBuilding);
+                        result = BuildingManager.addBuilding(newBuilding);
                         break;
                     default:
                         break;
@@ -81,12 +81,9 @@ public class AddBuildingPanel extends JPanel {
 
                 resultInfoPanel.removeAll();
                 String info;
-                if (lastResult) {
+                if (result) {
                     info = "Building have been added.";
-                    System.out.println("NIL: " + newItemListener);
-                    System.out.println("NB: " + newBuilding.getName());
                     newItemListener.newItemAdded(newBuilding);
-                    lastResult = false;
                 }
                 else {
                     info = "You cannot build this building, no enough resources";

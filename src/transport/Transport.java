@@ -117,7 +117,6 @@ public abstract class Transport implements Destructible, Fixable, DescriptionPub
     }
 
     public void unload(EventListener eventListener) {
-        System.out.println("DUPA8 " + currentCP.toString());
         eventListener.eventOccurred(this);
         ResourcesManager.add(currentCP, currentUP);
         this.currentCP.zeroing();

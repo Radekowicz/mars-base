@@ -15,6 +15,8 @@ public class OrderTransportButtonEvent extends EventObject {
     }
 
     public OrderTransportPanel getPanel() {
-        return new OrderTransportPanel();
+        OrderTransportPanel orderTransportPanel = new OrderTransportPanel();
+        orderTransportPanel.setNewItemListener(newItemListener);
+        return orderTransportPanel;
     }
 }
