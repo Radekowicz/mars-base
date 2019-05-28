@@ -10,6 +10,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 
+@SuppressWarnings("Duplicates")
 public class BuildingsPanel extends JPanel  {
     private static final int WIDTH = 1024;
     private static final int HEIGHT = 34;
@@ -19,6 +20,7 @@ public class BuildingsPanel extends JPanel  {
     JPanel buildingsPanel;
     private BuildingsPanelListener buildingsPanelListener;
     private AddBuildingListener addBuildingListener;
+    private ActionListener actionListenerForBuildingButton;
 
     public BuildingsPanel() {
         setPreferredSize(new Dimension(WIDTH, HEIGHT));
@@ -26,6 +28,7 @@ public class BuildingsPanel extends JPanel  {
         buildingsButtons = new ArrayList<>();
         setLayout(new FlowLayout(FlowLayout.CENTER));
         buildingsPanel = new JPanel();
+
 
         for (Building building: BuildingManager.getBuildings()) {
             BuildingButton buildingButton = new BuildingButton(building);
@@ -84,6 +87,30 @@ public class BuildingsPanel extends JPanel  {
             }
         });
         buildingsPanel.add(buildingButton);
+    }
+
+    public void refreshAll() {
+        System.out.println("#ELEOEOEBUAVFBUIABVFUI");
+        buildingsPanel.removeAll();
+
+        for (Building building: BuildingManager.getBuildings()) {
+            BuildingButton buildingButton = new BuildingButton(building);
+            buildingsButtons.add(buildingButton);
+            buildingButton.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent event) {
+                    BuildingButtonEvent buildingButtonEvent = new BuildingButtonEvent(event, buildingButton.getBuilding());
+
+                    if (buildingButtonEvent != null) {
+                        buildingsPanelListener.BuildingPanelOccurred(buildingButtonEvent);
+                    }
+                }
+            });
+            buildingsPanel.add(buildingButton);
+        }
+
+        buildingsPanel.validate();
+        buildingsPanel.repaint();
     }
 
     public void setBuildingsPanelListener(BuildingsPanelListener buildingPanelListener) {

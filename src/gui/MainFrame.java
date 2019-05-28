@@ -99,5 +99,7 @@ public class MainFrame extends JFrame implements EventListener {
         eventPanel.setVisible(true);
         eventPanel.validate();
         eventPanel.repaint();
+        buildingsPanel.refreshAll();
+        transportsPanel.refreshAll();
     }
 }
