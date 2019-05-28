@@ -23,7 +23,6 @@ public final class SettingsManager {
         BuildingManager.initializeBuildingManager(buildings);
 
         ArrayList<Transport> transports = SettingsStream.loadTransports();
-        //int transportOrderBreak = SettingsStream.loadTransportOrderBreak();
         TransportManager.initializeResourcesManager(transports, 1);
 
         int chanceForEvent = SettingsStream.loadChanceForEvent();

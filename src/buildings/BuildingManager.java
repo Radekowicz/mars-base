@@ -17,7 +17,6 @@ public final class BuildingManager {
     private static int numberOfPrintStations;
     private static long maxHumanCapacity;
     private static List<Building> buildings = new ArrayList<>();
-    private EventListener eventListener;
 
     /**
      *
