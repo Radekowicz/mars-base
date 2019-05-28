@@ -1,6 +1,5 @@
 package gui;
 
-import com.sun.xml.internal.messaging.saaj.soap.JpegDataContentHandler;
 import transport.Transport;
 import transport.TransportManager;
 

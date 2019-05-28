@@ -2,6 +2,7 @@ package buildings;
 
 import events.EventListener;
 import resources.ResourcesManager;
+import resources.UnitsPack;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -18,6 +19,10 @@ public final class BuildingManager {
     private static List<Building> buildings = new ArrayList<>();
     private EventListener eventListener;
 
+    /**
+     *
+     * @param buildings list of buildings
+     */
     private BuildingManager(List<Building> buildings) {
         this.buildings = buildings;
         Collections.sort(buildings);
@@ -38,10 +43,19 @@ public final class BuildingManager {
         return numberOfPrintStations;
     }
 
+    /**
+     *
+     * @return maximal capacity of the colony
+     */
     public static long getMaxHumanCapacity() {
         return maxHumanCapacity;
     }
 
+    /**
+     * checks ig there are enough resources, units and a free print station to build a building
+     * @param building the building that we want to build
+     * @return TRUE if can build, otherwise FALSE
+     */
     public static boolean canBuild(Building building) {
         if (ResourcesManager.isEnough(building.costOfBuildingInConsumables()) && ResourcesManager.isEnough(building.costOfBuildingInUnits()) && numberOfPrintStations > 0) {
             numberOfPrintStations--;
@@ -49,7 +63,10 @@ public final class BuildingManager {
         }
         else return false;
     }
-    
+
+    /**
+     * is used every second, checks and updates building status and things connected to the status
+     */
     public static void update() {
         List<Building> buildingsToRemove = new ArrayList<>();
 
@@ -106,6 +123,11 @@ public final class BuildingManager {
         buildingsToRemove.removeAll(buildingsToRemove);
     }
 
+    /**
+     * adds a buildng to the building list, consumes resources that are needed to build the building
+     * @param building
+     * @return
+     */
     public static boolean addBuilding(Building building) {
         if (canBuild(building)) {
             buildings.add(building);
@@ -116,6 +138,10 @@ public final class BuildingManager {
         return false;
     }
 
+    /**
+     * counts maximal capacity of the colony
+     * @return
+     */
     public static long countMaxHumanCapacity () {
         int amount = 0;
         for (Building building : buildings) {
@@ -125,10 +151,18 @@ public final class BuildingManager {
         return amount;
     }
 
+    /**
+     *
+     * @return buildings
+     */
     public static List<Building> getBuildings() {
         return buildings;
     }
 
+    /**
+     * counts number of print stations in the colony
+     * @return
+     */
     public static int countPrintStations() {
         int amount = 0;
         for (Building building : buildings) {
