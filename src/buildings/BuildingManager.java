@@ -8,9 +8,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-/**
- *
- */
+
+@SuppressWarnings("Duplicates")
+
 public final class BuildingManager {
     private static BuildingManager buildingManager = null;
     private static long hubCapacity = 50;
@@ -72,6 +72,7 @@ public final class BuildingManager {
                 buildingsToRemove.add(building);
                 if (building instanceof Hub) {
                     maxHumanCapacity -= hubCapacity;
+                    building.setChecked(true);
                 }
                 if (building instanceof PrintStation) {
                     numberOfPrintStations--;
@@ -80,6 +81,7 @@ public final class BuildingManager {
             else if (building.getBuildingStatus() == BuildingStatus.DAMAGED) {
                 if (building instanceof Hub) {
                     maxHumanCapacity -= hubCapacity;
+                    building.setChecked(true);
                 }
                 if (building instanceof PrintStation) {
                     numberOfPrintStations--;
