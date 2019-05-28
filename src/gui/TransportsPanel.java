@@ -1,5 +1,6 @@
 package gui;
 
+import com.sun.xml.internal.messaging.saaj.soap.JpegDataContentHandler;
 import transport.Transport;
 import transport.TransportManager;
 
@@ -9,6 +10,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
+
+@SuppressWarnings("Duplicates")
 
 public class TransportsPanel extends JPanel {
     private static final int WIDTH = 1024;
@@ -89,5 +92,28 @@ public class TransportsPanel extends JPanel {
             }
         });
         transportContener.add(transportButton);
+    }
+
+    public void refreshAll() {
+        transportContener.removeAll();
+
+        for (Transport transport: TransportManager.getTransports()) {
+            TransportButton transportButton = new TransportButton(transport);
+            transportsButtons.add(transportButton);
+            transportButton.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent event) {
+                    TransportButtonEvent transportButtonEvent = new TransportButtonEvent(event, transportButton.getTransport());
+
+                    if (transportButtonEvent != null) {
+                        transportsPanelListener.TransportPanelOccurred(transportButtonEvent);
+                    }
+                }
+            });
+            transportContener.add(transportButton);
+        }
+
+        transportContener.validate();
+        transportContener.repaint();
     }
 }

@@ -31,7 +31,7 @@ public class MeteorShower extends Event {
             if (random.nextInt(101) < 3) {
                 destructibleObject.damage();
                 numberOfDamagedObject++;
-                listOfDamagedObject.concat(destructibleObject.getName() + " ");
+                listOfDamagedObject.concat(destructibleObject.getName()).concat(" ");
             }
         }
 

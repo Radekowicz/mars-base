@@ -49,7 +49,7 @@ public abstract class Transport implements Destructible, Fixable, DescriptionPub
         this.currentCP = new ConsumablesPack(0,0,0,0,0,0);
         this.currentUP = new UnitsPack(0,0);
         this.possibleTargets = possibleTargets;
-        this.transportStatus = TransportStatus.ORDERED;
+        this.transportStatus = TransportStatus.ON_THE_WAY;
         this.orderedSpeed = 490000;
         this.currentPlace = Place.SPACE;
         this.target = Place.BASE;

@@ -1,8 +1,7 @@
 package buildings;
 
-import resources.ConsumablesPack;
+import events.EventListener;
 import resources.ResourcesManager;
-import resources.UnitsPack;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -17,6 +16,7 @@ public final class BuildingManager {
     private static int numberOfPrintStations;
     private static long maxHumanCapacity;
     private static List<Building> buildings = new ArrayList<>();
+    private EventListener eventListener;
 
     private BuildingManager(List<Building> buildings) {
         this.buildings = buildings;
@@ -66,6 +66,7 @@ public final class BuildingManager {
                 building.decreaseCounter();
                 if (building.isReady()) {
                     building.setBuildingStatus(BuildingStatus.WORKING);
+                    building.setChecked(false);
                     numberOfPrintStations++;
                     if (building instanceof Hub) {
                         maxHumanCapacity += hubCapacity;
@@ -75,7 +76,7 @@ public final class BuildingManager {
                     }
                 }
             }
-            else if (building.getBuildingStatus() == BuildingStatus.DESTROYED & !building.isChecked()) {
+            else if (building.getBuildingStatus() == BuildingStatus.DESTROYED && !building.isChecked()) {
                 buildingsToRemove.add(building);
                 if (building instanceof Hub) {
                     maxHumanCapacity -= hubCapacity;
@@ -86,7 +87,7 @@ public final class BuildingManager {
                     building.setChecked(true);
                 }
             }
-            else if (building.getBuildingStatus() == BuildingStatus.DAMAGED & !building.isChecked()) {
+            else if (building.getBuildingStatus() == BuildingStatus.DAMAGED && !building.isChecked()) {
                 if (building instanceof Hub) {
                     maxHumanCapacity -= hubCapacity;
                     building.setChecked(true);
@@ -135,6 +136,7 @@ public final class BuildingManager {
         }
         return amount;
     }
+
 
 
 }
