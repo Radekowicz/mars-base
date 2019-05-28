@@ -77,7 +77,6 @@ public class MainFrame extends JFrame implements EventListener {
         topPanel.add(buildingsPanel);
         topPanel.add(transportsPanel);
         topPanel.add(eventPanel);
-        bottomPanel.add(new JButton("TEMPORARY BUTTON DOES NOTHIGN"));
 
         topPanel.setLayout(new BoxLayout(topPanel, BoxLayout.Y_AXIS));
 

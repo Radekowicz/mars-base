@@ -2,6 +2,7 @@ package buildings;
 
 import events.EventListener;
 import resources.ResourcesManager;
+import resources.UnitsPack;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -136,7 +137,4 @@ public final class BuildingManager {
         }
         return amount;
     }
-
-
-
 }
