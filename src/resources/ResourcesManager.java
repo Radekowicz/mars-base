@@ -61,6 +61,14 @@ public final class ResourcesManager {
         return false;
     }
 
+    public static void update() {
+        long maxHumansCapacity = BuildingManager.getMaxHumanCapacity();
+
+        if (maxHumansCapacity < unitsPack.getHumans()) {
+            unitsPack.subtractHumans(unitsPack.getHumans() - maxHumansCapacity);
+        }
+    }
+
     public static boolean subtract(ConsumablesPack cP) {
         if (isEnough(cP)) {
             consumablesPack.subtract(cP);

@@ -90,7 +90,6 @@ public class BuildingsPanel extends JPanel  {
     }
 
     public void refreshAll() {
-        System.out.println("#ELEOEOEBUAVFBUIABVFUI");
         buildingsPanel.removeAll();
 
         for (Building building: BuildingManager.getBuildings()) {

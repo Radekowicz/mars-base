@@ -3,6 +3,7 @@ package engine;
 import buildings.BuildingManager;
 import events.EventManager;
 import gui.MainFrame;
+import resources.ResourcesManager;
 import transport.TransportManager;
 
 import java.awt.*;
@@ -41,6 +42,7 @@ public final class MarsBaseSimulator implements Runnable {
             BuildingManager.update();
             TransportManager.update();
             EventManager.tryTriggerEvent();
+            ResourcesManager.update();
             try {
                 Thread.sleep(gameSpeed);
             } catch (Exception e) {
