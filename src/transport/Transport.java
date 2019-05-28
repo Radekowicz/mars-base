@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Random;
 
 /**
- *
+ * Lorem ipsum set dolores ames...
  */
 public abstract class Transport implements Destructible, Fixable, DescriptionPublisher {
     private int speed;
@@ -31,6 +31,16 @@ public abstract class Transport implements Destructible, Fixable, DescriptionPub
     private boolean returning;
     private List<Place> possibleTargets;
 
+
+    /**
+     *
+     * @param speed - a number that represents how much an object can be moved
+     * @param name - is created by inherited classes from the formula CLASS_NAME + NUMBER ORDER TRANSPORT
+     * @param maxCPCapacity - max consumable resources capacity
+     * @param maxUPCapacity - max units capacity
+     * @param possibleTargets - possible places where transport can go
+     */
+
     public Transport(int speed, String name, ConsumablesPack maxCPCapacity, UnitsPack maxUPCapacity, List<Place> possibleTargets) {
         this.speed = speed;
         this.name = name;
@@ -47,6 +57,12 @@ public abstract class Transport implements Destructible, Fixable, DescriptionPub
         returning = true;
     }
 
+    /**
+     *
+     * @param target - place to which transport is sending
+     * @param distanceToDestiny - number represents distance
+     * @return true if transport have been sent, otherwise false
+     */
     public boolean send(Place target, int distanceToDestiny) {
         if (distanceToDestiny <= 0)
             throw new IllegalArgumentException("distance must be positive");
@@ -65,6 +81,10 @@ public abstract class Transport implements Destructible, Fixable, DescriptionPub
         return true;
     }
 
+    /**
+     * If transport have status "ONT THE WAY" may be moved by SPEED units to distance
+     * If target will be achieved transport status is change to "LOAD' or "UNLOAD" - depend on whether returning is true or false
+     */
     public void move() {
         if ((distanceToDestiny - speed) <= 0) {
             distanceToDestiny = 0;
@@ -83,6 +103,12 @@ public abstract class Transport implements Destructible, Fixable, DescriptionPub
             distanceToDestiny -= speed;
     }
 
+    /**
+     * If there are too many loaded units, transport is loading to max capacity, the rest is skipped
+     * At the end loading, transport's status is change to ON_THE_WAY, and returning is true
+     * @param CP - Consumables resources
+     * @param UP - Units resources
+     */
     public void load(ConsumablesPack CP, UnitsPack UP) {
         if (CP.getWater() > maxCPCapacity.getWater())
             this.currentCP.addWater(maxCPCapacity.getWater());
@@ -116,6 +142,10 @@ public abstract class Transport implements Destructible, Fixable, DescriptionPub
         this.returning = true;
     }
 
+    /**
+     * Add resources to total pot by ResourcesManager
+     * @param eventListener - listener which will be notified of the return of the transport
+     */
     public void unload(EventListener eventListener) {
         eventListener.eventOccurred(this);
         ResourcesManager.add(currentCP, currentUP);
@@ -126,10 +156,16 @@ public abstract class Transport implements Destructible, Fixable, DescriptionPub
         returning = false;
     }
 
+    /**
+     * @return transport's name
+     */
     public String getName() {
         return this.name;
     }
 
+    /**
+     * @return current target
+     */
     public Place getTarget() {
         return target;
     }
@@ -138,10 +174,19 @@ public abstract class Transport implements Destructible, Fixable, DescriptionPub
         return currentPlace;
     }
 
+    /**
+     * Check that target is in possibleTargets
+     * @param target - place where the transport would be sent
+     * @return true if target is possible, otherwise false
+     */
     public boolean targetIsPossible(Place target) {
         return possibleTargets.contains(target);
     }
 
+    /**
+     * Implements of Destructible interface and carries out the damage process
+     * Possible effects are: nothing if drawn number is 0, damaged if number if in range (0, 100) and destroyed if number is 100
+     */
     @Override
     public void damage() {
         if (transportStatus != TransportStatus.WAITING)
@@ -160,6 +205,10 @@ public abstract class Transport implements Destructible, Fixable, DescriptionPub
         transportStatus = TransportStatus.DAMAGED;
     }
 
+    /**
+     *
+     * @return true if transport have been fixed, otherwise false
+     */
     @Override
     public boolean fix() {
         if (transportStatus != TransportStatus.DAMAGED) {

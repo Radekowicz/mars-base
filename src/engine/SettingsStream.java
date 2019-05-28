@@ -165,4 +165,23 @@ public final class SettingsStream {
 
         return 10000;
     }
+
+    public static long loadGameSpeed() {
+        File file = new File("options/GameSpeedOption.txt");
+
+        try {
+            BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
+
+            long gameSpeed = Long.parseLong(bufferedReader.readLine());
+            if (gameSpeed < -100 || gameSpeed > 100)
+                return 1;
+
+            return gameSpeed;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return 1;
+    }
 }
