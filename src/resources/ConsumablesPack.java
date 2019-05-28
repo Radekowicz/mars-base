@@ -8,6 +8,15 @@ public final class ConsumablesPack {
     private long food;
     private long oxygen;
 
+    /**
+     * Constuct
+     * @param energy
+     * @param marsMaterial
+     * @param earthMaterial
+     * @param water
+     * @param food
+     * @param oxygen
+     */
     public ConsumablesPack(long energy, long marsMaterial, long earthMaterial, long water, long food, long oxygen) {
         this.energy = energy;
         this.marsMaterial = marsMaterial;
@@ -48,29 +57,46 @@ public final class ConsumablesPack {
     public void addFood(long x) { this.food += x;}
     public void addOxygen(long x) { this.oxygen += x;}
 
-    public void subtractEnergy(long x){
-        this.energy -= x;
+    public void add( ConsumablesPack otherCp){
+        this.energy += otherCp.energy;
+        this.marsMaterial += otherCp.marsMaterial;
+        this.earthMaterial += otherCp.earthMaterial;
+        this.water += otherCp.water;
+        this.food +=otherCp.food;
+        this.oxygen += otherCp.oxygen;
     }
 
+    public void subtractEnergy(long x){ this.energy -= x; }
     public void subtractMarsMaterial(long x) {
         this.marsMaterial -= x;
     }
-
     public void subtractEarthMaterial(long x) {
         this.earthMaterial -= x;
     }
-
     public void subtractWater(long x) {
         this.water -= x;
     }
-
     public void subtractFood(long x) {
         this.food -= x;
     }
-
     public void subtractOxygen(long x) {
         this.oxygen -= x;
     }
+
+    public boolean subtract(ConsumablesPack otherCp){
+        if(isEnough(otherCp)) {
+            this.energy -= otherCp.energy;
+            this.marsMaterial -= otherCp.marsMaterial;
+            this.earthMaterial -= otherCp.earthMaterial;
+            this.food -= otherCp.food;
+            this.water -= otherCp.water;
+            this.oxygen -= otherCp.oxygen;
+            return true;
+        }
+        return false;
+    }
+
+
 
     public boolean isEnough(ConsumablesPack cP) {
         return this.getEnergy()>= cP.getEnergy()
