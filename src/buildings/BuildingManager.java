@@ -169,7 +169,4 @@ public final class BuildingManager {
         }
         return amount;
     }
-
-
-
 }

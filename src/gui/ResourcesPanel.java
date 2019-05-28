@@ -13,6 +13,8 @@ public class ResourcesPanel extends JPanel {
     public static final int WIDTH = 1280;
     public static final int HEIGHT = 34;
 
+    private JLabel numberOfAvalalaiblePrintStation;
+
     private JLabel energyArea;
     private JLabel waterArea;
     private JLabel oxygenArea;
@@ -28,6 +30,7 @@ public class ResourcesPanel extends JPanel {
         setPreferredSize(new Dimension(WIDTH, HEIGHT));
         setBorder(BorderFactory.createLineBorder(Color.BLACK,2));
 
+        numberOfAvalalaiblePrintStation = new JLabel("| Avalaible print stations " + BuildingManager.getNumberOfPrintStations() + "|");
         energyArea = new JLabel("| " + ResourcesManager.getEnergyStatus() + " |");
         waterArea = new JLabel ("" + ResourcesManager.getWaterStatus() + " |");
         oxygenArea = new JLabel("" + ResourcesManager.getOxygenStatus() + " |");
@@ -38,6 +41,7 @@ public class ResourcesPanel extends JPanel {
         maxCapacityHumanArea = new JLabel("\\ " + BuildingManager.getMaxHumanCapacity() + " |");
         robotArea = new JLabel("" + ResourcesManager.getRobotStatus());
 
+        add(numberOfAvalalaiblePrintStation);
         add(new JLabel("Resources: "));
         add(new JLabel("Energy: "));
         add(energyArea);
@@ -70,6 +74,7 @@ public class ResourcesPanel extends JPanel {
     }
 
     private void updateResourcesPanel() {
+        numberOfAvalalaiblePrintStation.setText("| Avalaible print stations " + BuildingManager.getNumberOfPrintStations() + "|");
         energyArea.setText("" + ResourcesManager.getEnergyStatus() + " |");
         waterArea.setText("" + ResourcesManager.getWaterStatus()+ " |");
         oxygenArea.setText("" + ResourcesManager.getOxygenStatus() + " |");

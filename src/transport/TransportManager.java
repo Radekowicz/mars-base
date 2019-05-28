@@ -171,7 +171,7 @@ public final class TransportManager {
         Random random = new Random();
 
         if (place == Place.MARS) {
-            long water = random.nextInt(10);
+            long water = random.nextInt(50);
             long marsMaterial = random.nextInt(150) + 30;
 
             return new ConsumablesPack(0,marsMaterial,0,water,0,0);
@@ -182,14 +182,14 @@ public final class TransportManager {
             return new ConsumablesPack(0,0,earthMaterial,0,0,0);
         }
         else if (place == Place.ASTEROID) {
-            long water = random.nextInt(3000);
+            long water = random.nextInt(5000) + 1000;
             long marsMaterial = random.nextInt(500) + 50;
             long earthMaterial = random.nextInt(300);
 
             return new ConsumablesPack(0,marsMaterial,earthMaterial,water,0,0);
         }
         else if (place == Place.PLANETOID) {
-            long water = random.nextInt(10000) + 2000;
+            long water = random.nextInt(20000) + 5000;
             long marsMaterial = random.nextInt(150) + 30;
             long earthMaterial = random.nextInt(300);
 
