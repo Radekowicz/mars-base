@@ -32,12 +32,7 @@ public final class ResourcesManager {
     }
 
     public static void add(ConsumablesPack cP) {
-        consumablesPack.addEnergy(cP.getEnergy());
-        consumablesPack.addEarthMaterial(cP.getEarthMaterial());
-        consumablesPack.addMarsMaterial(cP.getMarsMaterial());
-        consumablesPack.addFood(cP.getFood());
-        consumablesPack.addWater(cP.getWater());
-        consumablesPack.addOxygen(cP.getOxygen());
+        consumablesPack.add(cP);
     }
 
     //jeśli gracz będzie chciał dodać więcej Human niż jest Capacity to zostanie odrzucony a interfejs wypisze ile Max Human może dodać ( howManyPlacesAvailable() )
@@ -59,14 +54,8 @@ public final class ResourcesManager {
 
     public static boolean subtract(ConsumablesPack cP, UnitsPack uP){
         if(resourcesManager.isEnough(cP,uP)) {
-            consumablesPack.subtractEnergy(cP.getEnergy());
-            consumablesPack.subtractEarthMaterial(cP.getEarthMaterial());
-            consumablesPack.subtractMarsMaterial(cP.getMarsMaterial());
-            consumablesPack.subtractFood(cP.getFood());
-            consumablesPack.subtractWater(cP.getWater());
-            consumablesPack.subtractOxygen(cP.getOxygen());
-            unitsPack.subtractHumans(uP.getHumans());
-            unitsPack.subtractRobots(uP.getRobots());
+            consumablesPack.subtract(cP);
+            unitsPack.subtract(uP);
             return true;
         }
         return false;
@@ -74,12 +63,7 @@ public final class ResourcesManager {
 
     public static boolean subtract(ConsumablesPack cP) {
         if (isEnough(cP)) {
-            consumablesPack.subtractEnergy(cP.getEnergy());
-            consumablesPack.subtractEarthMaterial(cP.getEarthMaterial());
-            consumablesPack.subtractMarsMaterial(cP.getMarsMaterial());
-            consumablesPack.subtractFood(cP.getFood());
-            consumablesPack.subtractWater(cP.getWater());
-            consumablesPack.subtractOxygen(cP.getOxygen());
+            consumablesPack.subtract(cP);
             return true;
         }
         return false;

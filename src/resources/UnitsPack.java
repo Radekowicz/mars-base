@@ -15,10 +15,7 @@ public final class UnitsPack {
     public long getRobots() {
         return robots; }
 
-    public void addHumans(long h) {
-        this.humans += h;
-
-    }
+    public void addHumans(long h) { this.humans += h; }
 
     public void addRobots(long r) {
         this.robots += r;
@@ -32,6 +29,12 @@ public final class UnitsPack {
         this.robots -= r;
     }
 
+    public void subtract(UnitsPack otherUp){
+        if(isEnough(otherUp)){
+            this.humans -= otherUp.humans;
+            this.robots -= otherUp.robots;
+        }
+    }
     public boolean isEnough(UnitsPack uP){
         return this.humans >= uP.getHumans() && this.robots >= uP.robots;
     }

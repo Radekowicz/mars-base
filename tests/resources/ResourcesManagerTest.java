@@ -61,7 +61,7 @@ class ResourcesManagerTest {
         BuildingManager.initializeBuildingManager(buildings);
         ResourcesManager.reset(new ConsumablesPack(0,0,0,0,0,0),new UnitsPack(0,0));
         ConsumablesPack zasoby3 = new ConsumablesPack(100,1232,543,98675,231,5445);
-        UnitsPack jednostki3  = new UnitsPack(3255,3454);
+        UnitsPack jednostki3  = new UnitsPack(100,100);
         ResourcesManager.add(zasoby3,jednostki3);
         ResourcesManager.subtract(zasoby3,jednostki3);
         assertEquals(ResourcesManager.getEnergyStatus(),0);
