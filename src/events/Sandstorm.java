@@ -9,6 +9,9 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
+/**
+ * Represents meteor shower event, destroys all solar panels
+ */
 public class Sandstorm extends Event {
     public Sandstorm(EventListener eventListener) {
         super(eventListener);

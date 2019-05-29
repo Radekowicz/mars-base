@@ -1,5 +1,8 @@
 package resources;
 
+/**
+ * This class represents units pack (consist of people and robots)
+ */
 public final class UnitsPack {
     private long humans;
     private long robots;

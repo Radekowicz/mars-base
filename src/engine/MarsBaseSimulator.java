@@ -8,6 +8,9 @@ import transport.TransportManager;
 
 import java.awt.*;
 
+/**
+ * Main class with main loop
+ */
 public final class MarsBaseSimulator implements Runnable {
 
     private MainFrame mainFrame;

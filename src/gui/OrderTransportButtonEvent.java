@@ -2,6 +2,9 @@ package gui;
 
 import java.util.EventObject;
 
+/**
+ * Event object that informs the main panel about the change of the action panel
+ */
 public class OrderTransportButtonEvent extends EventObject {
     NewItemListener newItemListener;
 

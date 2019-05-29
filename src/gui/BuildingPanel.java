@@ -9,6 +9,9 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * Action panel, shows info about building
+ */
 public class BuildingPanel extends JPanel {
     private static final int WIDTH = 1024;
     private Building building;

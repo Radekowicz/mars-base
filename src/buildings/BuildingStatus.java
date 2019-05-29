@@ -1,5 +1,8 @@
 package buildings;
 
+/**
+ * Represents building's status
+ */
 public enum BuildingStatus {
     WORKING,
     CLOSED,

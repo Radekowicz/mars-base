@@ -8,6 +8,9 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
+/**
+ * Represents meteor shower event, destroys all structures in base
+ */
 public class MeteorShower extends Event {
     public MeteorShower(EventListener eventListener) {
         super(eventListener);

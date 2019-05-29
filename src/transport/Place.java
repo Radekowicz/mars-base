@@ -1,5 +1,8 @@
 package transport;
 
+/**
+ * Represents place in space and on the Mars's surface
+ */
 public enum Place {
     EARTH,
     ASTEROID,

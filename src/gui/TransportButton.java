@@ -4,6 +4,9 @@ import transport.Transport;
 
 import javax.swing.*;
 
+/**
+ * Special button that stores the reference to mean of transport
+ */
 public class TransportButton extends JButton {
     Transport transport;
 

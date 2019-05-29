@@ -2,6 +2,9 @@ package resources;
 
 import buildings.BuildingManager;
 
+/**
+ * This class manages resources - receives and gives after checking
+ */
 public final class ResourcesManager {
     private static ResourcesManager resourcesManager = null;
 
@@ -115,7 +118,7 @@ public final class ResourcesManager {
 
     /**
      * subtracts units
-     * @param uP
+     * @param uP UnitsPack
      * @return returs if subtractions took place or not
      */
     public static boolean subtract(UnitsPack uP) {
@@ -129,9 +132,9 @@ public final class ResourcesManager {
 
     /**
      * checks if there is enough consumables and units
-     * @param cP
-     * @param uP
-     * @return
+     * @param cP ConsumablesPack
+     * @param uP UnitsPack
+     * @return true if is enough, otherwise false
      */
     public static boolean isEnough(ConsumablesPack cP, UnitsPack uP){
         return consumablesPack.isEnough(cP) && unitsPack.isEnough(uP);
@@ -139,8 +142,8 @@ public final class ResourcesManager {
 
     /**
      * checks if there is enough consumables
-     * @param cP
-     * @return
+     * @param cP ConsumablesPack
+     * @return true if is enough, otherwise false
      */
     public static boolean isEnough(ConsumablesPack cP){
         return consumablesPack.isEnough(cP);
@@ -148,8 +151,8 @@ public final class ResourcesManager {
 
     /**
      * checks if there is enough units
-     * @param uP
-     * @return
+     * @param uP UnitsPack
+     * @return true if is enough, otherwise false
      */
     public static boolean isEnough(UnitsPack uP){
         return unitsPack.isEnough(uP);

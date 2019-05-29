@@ -3,6 +3,9 @@ package transport;
 import resources.ConsumablesPack;
 import resources.UnitsPack;
 
+/**
+ * Fast rocket with low capacity
+ */
 public class SwiftRocket extends Rocket {
     private static int number = 1;
 

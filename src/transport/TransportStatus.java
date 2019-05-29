@@ -1,5 +1,8 @@
 package transport;
 
+/**
+ * Represents transport's status
+ */
 public enum TransportStatus {
     WAITING,
     ON_THE_WAY,

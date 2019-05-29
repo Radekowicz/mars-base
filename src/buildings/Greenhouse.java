@@ -3,6 +3,9 @@ package buildings;
 import resources.ConsumablesPack;
 import resources.UnitsPack;
 
+/**
+ * Building which produces food
+ */
 public class Greenhouse extends Building {
     private static int buildingNumber = 1;
 

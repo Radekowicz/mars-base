@@ -10,6 +10,9 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Info panel, shows means of buildings
+ */
 @SuppressWarnings("Duplicates")
 public class BuildingsPanel extends JPanel  {
     private static final int WIDTH = 1024;

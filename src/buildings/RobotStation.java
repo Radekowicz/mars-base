@@ -3,6 +3,9 @@ package buildings;
 import resources.ConsumablesPack;
 import resources.UnitsPack;
 
+/**
+ * Building which produces robots
+ */
 public class RobotStation extends Building {
     private static int buildingNumber = 1;
 

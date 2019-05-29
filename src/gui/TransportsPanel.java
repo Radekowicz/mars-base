@@ -13,6 +13,9 @@ import java.util.List;
 
 @SuppressWarnings("Duplicates")
 
+/**
+ * Info panel, shows means of transport
+ */
 public class TransportsPanel extends JPanel {
     private static final int WIDTH = 1024;
     private static final int HEIGHT = 34;

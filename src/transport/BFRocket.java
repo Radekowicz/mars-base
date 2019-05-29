@@ -3,6 +3,9 @@ package transport;
 import resources.ConsumablesPack;
 import resources.UnitsPack;
 
+/**
+ * Slow rocket with huge capacity
+ */
 public class BFRocket extends Rocket {
     private static int number = 1;
 

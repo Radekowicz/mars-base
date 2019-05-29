@@ -11,6 +11,9 @@ import transport.SwiftRocket;
 import transport.Transport;
 import transport.Truck;
 
+/**
+ * Loads values of options from files
+ */
 public final class SettingsStream {
     private SettingsStream() {}
 

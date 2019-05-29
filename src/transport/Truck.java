@@ -7,6 +7,9 @@ import resources.UnitsPack;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+/**
+ * Inherits from Transport, may be send to Mars's surface
+ */
 public class Truck extends Transport {
     private static int number = 1;
 

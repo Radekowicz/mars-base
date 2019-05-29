@@ -8,9 +8,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-
+/**
+ * Manages building
+ */
 @SuppressWarnings("Duplicates")
-
 public final class BuildingManager {
     private static BuildingManager buildingManager = null;
     private static long hubCapacity = 50;
@@ -43,6 +44,11 @@ public final class BuildingManager {
         return maxHumanCapacity;
     }
 
+    /**
+     * Checks if building can be build
+     * @param building building that is checked
+     * @return true if building can be build, otherwise false
+     */
     public static boolean canBuild(Building building) {
         if (ResourcesManager.isEnough(building.costOfBuildingInConsumables()) && ResourcesManager.isEnough(building.costOfBuildingInUnits()) && numberOfPrintStations > 0) {
             numberOfPrintStations--;
@@ -50,7 +56,7 @@ public final class BuildingManager {
         }
         else return false;
     }
-    
+
     public static void update() {
         List<Building> buildingsToRemove = new ArrayList<>();
 
@@ -138,3 +144,8 @@ public final class BuildingManager {
         return amount;
     }
 }
+
+
+
+
+

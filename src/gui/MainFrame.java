@@ -6,6 +6,9 @@ import events.EventListener;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * Main frame, stores all panels and switch between actions panels
+ */
 public class MainFrame extends JFrame implements EventListener {
     public static final int WIDTH = 1280;
     public static final int HEIGHT = 1024;

@@ -1,5 +1,8 @@
 package events;
 
+/**
+ * This class represents event
+ */
 public abstract class Event implements DescriptionPublisher {
     private EventListener eventListener;
     private String describe;
@@ -23,6 +26,10 @@ public abstract class Event implements DescriptionPublisher {
         this.describe = describe;
     }
 
+    /**
+     * Return's prepared describe
+     * @return describe as String
+     */
     @Override
     public String getDescribed() {
         return describe;

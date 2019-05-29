@@ -3,6 +3,9 @@ package buildings;
 import resources.ConsumablesPack;
 import resources.UnitsPack;
 
+/**
+ * Building in which people are stored
+ */
 public class Hub extends Building {
     private static int buildingNumber = 1;
 
