@@ -7,6 +7,9 @@ import resources.UnitsPack;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+/**
+ * Inherits from Transport, may be send to objects in space
+ */
 public abstract class Rocket extends Transport {
     public Rocket(int speed, String name, ConsumablesPack maxCPCapacity, UnitsPack maxUPCapacity) {
         super(speed, name, maxCPCapacity, maxUPCapacity, new ArrayList<>(Arrays.asList(

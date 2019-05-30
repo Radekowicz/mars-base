@@ -3,6 +3,9 @@ package buildings;
 import resources.ConsumablesPack;
 import resources.UnitsPack;
 
+/**
+ * Expensive building which produce a lot of energy
+ */
 public class ColdFusionPowerPlant extends Building {
     private static int buildingNumber = 1;
 

@@ -3,6 +3,9 @@ package buildings;
 import resources.ConsumablesPack;
 import resources.UnitsPack;
 
+/**
+ * Building which produces mars material
+ */
 public class OpenPitMine extends Building {
     private static int buildingNumber = 1;
 

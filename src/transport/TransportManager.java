@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Random;
 
 /**
- * Class managing transport,
+ * This class manages means of transport
  */
 public final class TransportManager {
     private static TransportManager transportManager = null;

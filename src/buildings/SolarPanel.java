@@ -3,6 +3,9 @@ package buildings;
 import resources.ConsumablesPack;
 import resources.UnitsPack;
 
+/**
+ * Cheap building, produces little energy
+ */
 public class SolarPanel extends Building {
     private static int buildingNumber = 1;
 

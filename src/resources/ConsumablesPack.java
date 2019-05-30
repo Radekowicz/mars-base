@@ -1,5 +1,8 @@
 package resources;
 
+/**
+ * This class represents consumables pack (consist of energy, mars material, earth material, water, food and oxygen)
+ */
 public final class ConsumablesPack {
     private long energy;
     private long marsMaterial;
@@ -175,7 +178,7 @@ public final class ConsumablesPack {
     /**
      * checks if there is enough resources that after subtraction amount of every resource will be grater then zero
      * @param cP ConsumablesPack variable which will be compared
-     * @return true or false, true -> We have more resources than param, false -> at least one of resources is smaller then param
+     * @return true or false, true We have more resources than param, false when at least one of resources is smaller then param
      */
     public boolean isEnough(ConsumablesPack cP) {
         return this.getEnergy()>= cP.getEnergy()

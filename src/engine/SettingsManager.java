@@ -11,6 +11,9 @@ import transport.TransportManager;
 
 import java.util.ArrayList;
 
+/**
+ * Manages settings (initializes managers)
+ */
 public final class SettingsManager {
     private SettingsManager() {}
 

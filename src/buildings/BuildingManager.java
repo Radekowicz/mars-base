@@ -8,9 +8,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-
+/**
+ * Manages building
+ */
 @SuppressWarnings("Duplicates")
-
 public final class BuildingManager {
     private static BuildingManager buildingManager = null;
     private static long hubCapacity = 50;
@@ -170,3 +171,8 @@ public final class BuildingManager {
         return amount;
     }
 }
+
+
+
+
+

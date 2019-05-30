@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Random;
 
 /**
- * Lorem ipsum set dolores ames...
+ * This class represents mean of transport
  */
 public abstract class Transport implements Destructible, Fixable, DescriptionPublisher {
     private int speed;

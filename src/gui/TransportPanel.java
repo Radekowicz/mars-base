@@ -11,6 +11,9 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * Action panel, shows info about mean of transport
+ */
 public class TransportPanel extends JPanel {
     private Transport transport;
     private JPanel infoPanel;

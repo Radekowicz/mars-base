@@ -7,6 +7,9 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * Action panel, shows info about transport order
+ */
 public class OrderTransportPanel extends JPanel {
     private static final int WIDTH = 1024;
     private static final int HEIGHT = 200;

@@ -8,6 +8,9 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * Info panel, shows resources
+ */
 public class ResourcesPanel extends JPanel {
 
     public static final int WIDTH = 1280;

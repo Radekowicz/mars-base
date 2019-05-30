@@ -3,6 +3,9 @@ package buildings;
 import resources.ConsumablesPack;
 import resources.UnitsPack;
 
+/**
+ * Building that serves as tools is used to build other buildings
+ */
 public class PrintStation extends Building{
     private static int buildingNumber = 1;
 

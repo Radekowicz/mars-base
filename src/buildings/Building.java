@@ -9,7 +9,7 @@ import resources.UnitsPack;
 import java.util.Random;
 
 /**
- * An a abstract class
+ * Represents building structure, takes and gives resources or units, may serves as a tool
  */
 public abstract class Building implements Comparable<Building>, Destructible, Fixable {
     private int counter = timeOfBuild();
